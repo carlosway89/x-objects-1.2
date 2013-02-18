@@ -1,0 +1,5 @@
+<div class="service">
+	<a class="service-link" title="click to manage records of this type" 
+		href="[var:webroot]manage/view/[get:name]"><strong>Manage [get:name]</strong></a>
+</div>
+			

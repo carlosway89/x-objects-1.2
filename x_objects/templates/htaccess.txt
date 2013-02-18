@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine on
+
+# standard controller
+RewriteRule ^([a-z|A-Z|_|\-|0-9]+)?$ /x_objects/index.php?key=$1 [L,QSA]
+
+# API access for event log
+RewriteRule ^api/business/xevent/([a-z]+)?$ /x_objects/api/api.php?module=business&key=xevent&method=$1 [L,QSA]
+
+# API rules for business
+RewriteRule ^api/business/([a-z_]+)/([a-z_]+)?$ /x_objects/api/api.php?module=business&key=$1&method=$2 [L,QSA]
+RewriteRule ^api/business/([a-z_]+)/([0-9]+)/([a-z_]+)?$ /x_objects/api/api.php?module=business&key=$1&id=$2&method=$3 [L,QSA]

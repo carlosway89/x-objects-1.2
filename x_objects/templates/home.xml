@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<home doctype="strict">
+	<head>
+		<title>Test Home Page | [var:app_name]</title>	
+		<!-- html5 reset default css include -->
+		<css>[var:webroot][var:directory_name]/css/html5reset.css</css>
+		<!-- x-objects css library -->
+		<css>[var:webroot][var:directory_name]/css/x-objects.css</css>
+		<css>[var:webroot]css/[var:app_name].css</css>	
+		<script src="[var:webroot][var:directory_name]/js/jquery-1.6.3.js"/>
+		<!--  load xml to json library -->
+		<script src="[var:webroot][var:directory_name]/js/jquery.xml2json.js"/>
+		<script src="[var:webroot][var:directory_name]/js/jquery-ui-1.8.12.custom.min.js"/>
+		<script src="[var:webroot][var:directory_name]/js/xo-base.js"/>
+		<script src="[var:webroot]js/[var:app_name].js"/>	
+		<script>
+			$.[var:app_name].init();
+		</script>
+  	</head>
+ 	<body>
+		<div class="container">
+			<span class="hello">Hello, World!  :-)</span>
+		</div>
+	</body>
+</home>

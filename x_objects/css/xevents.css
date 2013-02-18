@@ -1,0 +1,88 @@
+/* put your app css here */
+div.event-log {
+	width: 90%;
+	height: 600px;
+	overflow: auto;
+	margin: 10px auto;
+	padding: 5px;
+	border: 1px gray solid;
+}
+
+div.event-log-controls {
+	width: 90%;
+	height: auto;
+	overflow: hidden;
+	margin: 10px auto;
+	padding: 5px;
+	border: 1px gray solid;
+}
+
+/* styles for all xevents */
+div.xevent {
+	float: left;
+	clear: left;
+	margin: 5px 2px;
+	height: auto;
+	overflow: hidden;
+	padding: 2px;
+	width: 90%;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+
+.xevent-notice {
+	color: black;
+}
+
+.xevent-twitter {
+	background-color: #2e2e2e;
+	font-weight: bold;
+}
+.xevent-success {
+	font-weight: bold;
+	color: green;
+}
+
+.xevent-twitter-success{
+	color: #c1ffc1;
+}
+
+.xevent-failure, .xevent-twitter-error {
+	font-weight: bold;
+	color: red;
+}
+
+.xevent-warning , .xevent-twitter-warning{
+	font-weight: bold;
+	color: orange;
+}
+
+.xevent-debug {
+	color: blue;
+}
+
+.xevent-twitter-debug {
+	background-color: #2e2e2e;
+	color: #b0d3e6;
+	font-weight: bold;
+}
+
+.xevent-twitter-notice {
+	color: white;
+}
+
+.xevent-exception {
+	color: magenta;
+	font-weight: bold;
+}
+
+div.twitter-tag {
+	width: 100px;
+	height: 15px;
+	background-size: 100px 15px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url( ../images/twitter_full_logo_white_blue.png );
+	margin: 5px 0px 0px 0px;
+}

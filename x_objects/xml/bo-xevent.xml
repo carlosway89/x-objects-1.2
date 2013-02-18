@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bo-xevent>
+	<!-- specify the datasource for this business object -->
+	<datasource>
+		<name>xo_event</name>
+		<type>table</type>
+		<alias>xo_event</alias>
+		<key>id</key>
+		<read_only>date_added</read_only>
+	</datasource>
+</bo-xevent>

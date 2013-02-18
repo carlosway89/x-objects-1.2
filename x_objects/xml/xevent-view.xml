@@ -1,0 +1,3 @@
+<div id="[get:id]" class="[get:css_class] xevent id-[get:id]">
+[ [get:event_time] ][ [get:message] ]
+</div>

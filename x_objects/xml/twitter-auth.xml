@@ -1,0 +1,6 @@
+<div class="twitter-auth">
+
+	<!-- login button -->
+	<a href="[var:webroot][var:directory_name]/3rdparty/twitter/redirect.php"><img src="[var:webroot][var:directory_name]/images/twitter1.png"/></a>
+	
+</div>

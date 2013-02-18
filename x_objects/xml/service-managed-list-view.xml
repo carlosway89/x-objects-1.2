@@ -1,0 +1,2 @@
+<!-- show the record view as an x-object -->
+<x-object key="[get:key]-admin-list-view"/>

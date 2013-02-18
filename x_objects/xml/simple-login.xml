@@ -1,0 +1,15 @@
+<div class="simple-login [var:logged_in_class] xo-round5 [@class] callback-[@callback] ukey-[@ukey]">
+	<div class="simple-login-row  [@class]">
+		<label class="simple-login username [@class]">Username:</label>
+		<input class="simple-login [@class]" id="username" name="username" value="[REQ:username]"/>
+	</div>
+	<div class="simple-login-row [@class]">
+		<label class="simple-login password [@class]">Password:</label>
+		<input class="simple-login [@class]" id="password" name="passord" type="password" value=""/>
+	</div>
+	<div class="simple-login-row [@class]">
+		<input type="hidden" name="auth_key" id="auth_key" value="[@ukey][var:auth_key]"/>
+		<button class="simple-login do [@class]" id="submit" name="submit">Login</button>
+		<span class="simple-login-result [@class]"></span>
+	</div>
+</div>

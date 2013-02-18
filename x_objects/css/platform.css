@@ -1,0 +1,46 @@
+/*
+ * Project:			Platform
+ * Module:			css/platform
+ * 
+ * Purpose:			Style classes common to the platform framework,
+ * 					making it much easier to create dynamic html
+ * 
+ * Created by:		David Owen Greenberg <david.o.greenberg@gmail.com>
+ * On:				15 Oct 2010
+ */
+ 
+ /* FONT_*: classes to update the font name, style and color */
+
+.FONTNAME_verdana, .STYLE_Font_Name_verdana, .STYLE_Font_Name_1 { font-family: verdana; }
+.FONTNAME_tahoma, .STYLE_Font_Name_tahoma, .STYLE_Font_Name_2 { font-family: tahoma; }
+.FONTNAME_helvetica, .STYLE_Font_Name_helvetica, .STYLE_Font_Name_3 { font-family: helvetica; }
+.FONTNAME_courier, .STYLE_Font_Name_courier, .STYLE_Font_Name_4 { font-family: courier; }
+.FONTNAME_times, .STYLE_Font_Name_times, .STYLE_Font_Name_5 { font-family: times; }
+
+
+.FONTCOLOR_black, .STYLE_Font_Color_black, .STYLE_Font_Color_1 { color: #000000; }
+.FONTCOLOR_red, .STYLE_Font_Color_red, .STYLE_Font_Color_2 { color: #fc0517; }
+.FONTCOLOR_yellow, .STYLE_Font_Color_yellow, .STYLE_Font_Color_3 {  color: #f1b717;}
+.FONTCOLOR_sky_blue, .STYLE_Font_Color_sky_blue, .STYLE_Font_Color_4 { color: #71c4f0; }
+.FONTCOLOR_violet, .STYLE_Font_Color_violet, .STYLE_Font_Color_5 { color: #7c12d3; }
+.FONTCOLOR_blue, .STYLE_Font_Color_blue , .STYLE_Font_Color_6 { color: #1A0FA8; }
+
+.FONTSTYLE_bold, .STYLE_Font_Style_bold, .STYLE_Font_Style_1 { font-weight: bold; }
+.FONTSTYLE_italic, .STYLE_Font_Style_italic, .STYLE_Font_Style_2 { font-style: italic; }
+.FONTSTYLE_underline, .STYLE_Font_Style_underline, .STYLE_Font_Style_3 { text-decoration: underline; }
+
+/* StyleFieldControl: styles for a style field control to display results of selection */
+.StyleFieldControl { border: 1px black solid; padding: 2px; margin-left: 1em; }
+
+ 
+
+
+/*
+ * hidden (class): hides an element
+ */
+.hidden { visibility: hidden; display: none; }
+
+/*
+ * visible (class): shows an element (as a block)
+ */
+.visible { visibility: visible; display: block; }

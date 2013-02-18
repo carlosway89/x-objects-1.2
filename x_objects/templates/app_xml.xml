@@ -1,0 +1,12 @@
+<#appname>
+	<!-- jquery bindings when document is ready -->
+	<document-ready>
+		<context id="global">
+			<!-- key presses in name bar -->
+			<binding query="div.example" bind="click" handler="$.#appname.click_handler"/>
+		</context>	
+	</document-ready>	
+	<!-- set behaviors and controls for user interface -->
+	<ui>
+	</ui>
+</#appname>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- X-Objects 1.x Main Application and Container Configuration File.  This file is required for all X-Objects instances -->
+<x-objects>
+	<!-- name of app instance to load -->
+	<appname>_appname_</appname>
+	<!-- enable css compatibility, wherein each element gets a class corresponding to the current browser type and version -->
+	<css_compatibility>enabled</css_compatibility>
+	<!-- set the classname case convention -->
+	<classname_case>all_lowercase</classname_case>
+	<!-- vcache configuration -->
+	<vcache_config>
+		<table>realobjects_vcache_table</table>
+	</vcache_config>
+	<debugger>
+		<status>disabled</status>
+		<level>1</level>
+		<file>/debug.txt</file>
+	</debugger>
+		<database>
+			<database></database>
+			<host>localhost</host>
+			<username></username>
+			<password></password>
+			<socket></socket>
+			<port>3306</port>
+	</database>
+	<!-- site settings -->
+	<site>
+		<environment>development</environment>
+		<controllers>
+			<missing_redirect>page/e404</missing_redirect>
+		</controllers>
+	</site>
+</x-objects>

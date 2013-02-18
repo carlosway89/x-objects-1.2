@@ -1,0 +1,17 @@
+To install:
+
+1) Copy /x_objects subdirectory (all contents) to your webroot
+
+2) Create a new mysql database, and a user with dba-level privileges.  Make a note of the username and password for later.
+
+3) Import the script /x_objects/sql/install.sql into your new database
+
+Note: for now, this script merely creates the application event log table.
+
+4) Run the installer at http://yoursite.yourdomain.com/x_objects/install/
+
+5) Rename templates/htaccess.txt to /.htaccess OR append the required rules to your existing htaccess file
+
+6) Attempt to load your new application's home page
+
+DONE!

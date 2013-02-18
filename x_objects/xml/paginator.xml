@@ -1,0 +1,129 @@
+<div class="[get:class] page-[get:page] lastpage-[get:last_page] size-[get:size] key-[get:key]">
+	<!-- rewind -->
+	<button class="default-callback rewind action-rewind [get:class] [get:rewind_class]">&lt;&lt;</button>
+	<!-- back -->
+	<button class="default-callback back action-back [get:class] [get:back_class]">&lt;</button>
+	
+	<button class="default-callback prev-pages action-prevpages [get:class] [get:has_prev_pages]">...</button>
+	
+	<!-- page buttons -->
+	<!-- group 1 -->
+	<button class="default-callback page action-page page-1 [get:class] [get:group1_class] [get:page1_class] [get:current1]">1</button>
+	<button class="default-callback page action-page page-2 [get:class] [get:group1_class] [get:page2_class] [get:current2]">2</button>
+	<button class="default-callback page action-page page-3 [get:class] [get:group1_class] [get:page3_class] [get:current3]">3</button>
+	<button class="default-callback page action-page page-4 [get:class] [get:group1_class] [get:page4_class] [get:current4]">4</button>
+	<button class="default-callback page action-page page-5 [get:class] [get:group1_class] [get:page5_class] [get:current5]">5</button>
+	<button class="default-callback page action-page page-6 [get:class] [get:group1_class] [get:page6_class] [get:current6]">6</button>
+	<button class="default-callback page action-page page-7 [get:class] [get:group1_class] [get:page7_class] [get:current7]">7</button>
+	<button class="default-callback page action-page page-8 [get:class] [get:group1_class] [get:page8_class] [get:current8]">8</button>
+	
+	<!-- group 2 -->
+	<button class="default-callback page action-page page-9 [get:class] [get:group2_class] [get:page9_class] [get:current9]">9</button>
+	<button class="default-callback page action-page page-10 [get:class] [get:group2_class] [get:page10_class] [get:current10]">10</button>
+	<button class="default-callback page action-page page-11 [get:class] [get:group2_class] [get:page11_class] [get:current11]">11</button>
+	<button class="default-callback page action-page page-12 [get:class] [get:group2_class] [get:page12_class] [get:current12]">12</button>
+	<button class="default-callback page action-page page-13 [get:class] [get:group2_class] [get:page13_class] [get:current13]">13</button>
+	<button class="default-callback page action-page page-14 [get:class] [get:group2_class] [get:page14_class] [get:current14]">14</button>
+	<button class="default-callback page action-page page-15 [get:class] [get:group2_class] [get:page15_class] [get:current15]">15</button>
+	<button class="default-callback page action-page page-16 [get:class] [get:group2_class] [get:page16_class] [get:current16]">16</button>
+	
+	<!-- group 3 -->
+	<button class="default-callback page action-page page-17 [get:class] [get:group3_class] [get:page17_class] [get:current17]">17</button>
+	<button class="default-callback page action-page page-18 [get:class] [get:group3_class] [get:page18_class] [get:current18]">18</button>
+	<button class="default-callback page action-page page-19 [get:class] [get:group3_class] [get:page19_class] [get:current19]">19</button>
+	<button class="default-callback page action-page page-20 [get:class] [get:group3_class] [get:page20_class] [get:current20]">20</button>
+	<button class="default-callback page action-page page-21 [get:class] [get:group3_class] [get:page21_class] [get:current21]">21</button>
+	<button class="default-callback page action-page page-22 [get:class] [get:group3_class] [get:page22_class] [get:current22]">22</button>
+	<button class="default-callback page action-page page-23 [get:class] [get:group3_class] [get:page23_class] [get:current23]">23</button>
+	<button class="default-callback page action-page page-24 [get:class] [get:group3_class] [get:page24_class] [get:current24]">24</button>
+	
+	<!-- group 4 -->
+	<button class="default-callback page action-page page-25 [get:class] [get:group4_class] [get:page25_class] [get:current25]">25</button>
+	<button class="default-callback page action-page page-26 [get:class] [get:group4_class] [get:page26_class] [get:current26]">26</button>
+	<button class="default-callback page action-page page-27 [get:class] [get:group4_class] [get:page27_class] [get:current27]">27</button>
+	<button class="default-callback page action-page page-28 [get:class] [get:group4_class] [get:page28_class] [get:current28]">28</button>
+	<button class="default-callback page action-page page-29 [get:class] [get:group4_class] [get:page29_class] [get:current29]">29</button>
+	<button class="default-callback page action-page page-30 [get:class] [get:group4_class] [get:page30_class] [get:current30]">30</button>
+	<button class="default-callback page action-page page-31 [get:class] [get:group4_class] [get:page31_class] [get:current31]">31</button>
+	<button class="default-callback page action-page page-32 [get:class] [get:group4_class] [get:page32_class] [get:current32]">32</button>
+	
+	<!-- group 5 -->
+	<button class="default-callback page action-page page-33 [get:class] [get:group5_class] [get:page33_class] [get:current33]">33</button>
+	<button class="default-callback page action-page page-34 [get:class] [get:group5_class] [get:page34_class] [get:current34]">34</button>
+	<button class="default-callback page action-page page-35 [get:class] [get:group5_class] [get:page35_class] [get:current35]">35</button>
+	<button class="default-callback page action-page page-36 [get:class] [get:group5_class] [get:page36_class] [get:current36]">36</button>
+	<button class="default-callback page action-page page-37 [get:class] [get:group5_class] [get:page37_class] [get:current37]">37</button>
+	<button class="default-callback page action-page page-38 [get:class] [get:group5_class] [get:page38_class] [get:current38]">38</button>
+	<button class="default-callback page action-page page-39 [get:class] [get:group5_class] [get:page39_class] [get:current39]">39</button>
+	<button class="default-callback page action-page page-40 [get:class] [get:group5_class] [get:page40_class] [get:current40]">40</button>
+	
+	<!-- group 6 -->
+	<button class="default-callback page action-page page-41 [get:class] [get:group6_class] [get:page41_class] [get:current41]">41</button>
+	<button class="default-callback page action-page page-42 [get:class] [get:group6_class] [get:page42_class] [get:current42]">42</button>
+	<button class="default-callback page action-page page-43 [get:class] [get:group6_class] [get:page43_class] [get:current43]">43</button>
+	<button class="default-callback page action-page page-44 [get:class] [get:group6_class] [get:page44_class] [get:current44]">44</button>
+	<button class="default-callback page action-page page-45 [get:class] [get:group6_class] [get:page45_class] [get:current45]">45</button>
+	<button class="default-callback page action-page page-46 [get:class] [get:group6_class] [get:page46_class] [get:current46]">46</button>
+	<button class="default-callback page action-page page-47 [get:class] [get:group6_class] [get:page47_class] [get:current47]">47</button>
+	<button class="default-callback page action-page page-48 [get:class] [get:group6_class] [get:page48_class] [get:current48]">48</button>
+	
+	
+	<!-- group 7 -->
+	<button class="default-callback page action-page page-49 [get:class] [get:group7_class] [get:page49_class] [get:current49]">49</button>
+	<button class="default-callback page action-page page-50 [get:class] [get:group7_class] [get:page50_class] [get:current50]">50</button>
+	<button class="default-callback page action-page page-51 [get:class] [get:group7_class] [get:page51_class] [get:current51]">51</button>
+	<button class="default-callback page action-page page-52 [get:class] [get:group7_class] [get:page52_class] [get:current52]">52</button>
+	<button class="default-callback page action-page page-53 [get:class] [get:group7_class] [get:page53_class] [get:current53]">53</button>
+	<button class="default-callback page action-page page-54 [get:class] [get:group7_class] [get:page54_class] [get:current54]">54</button>
+	<button class="default-callback page action-page page-55 [get:class] [get:group7_class] [get:page55_class] [get:current55]">55</button>
+	<button class="default-callback page action-page page-56 [get:class] [get:group7_class] [get:page56_class] [get:current56]">56</button>
+	
+	<!-- group 8 -->
+	<button class="default-callback page action-page page-57 [get:class] [get:group8_class] [get:page57_class] [get:current57]">57</button>
+	<button class="default-callback page action-page page-58 [get:class] [get:group8_class] [get:page58_class] [get:current58]">58</button>
+	<button class="default-callback page action-page page-59 [get:class] [get:group8_class] [get:page59_class] [get:current1]">59</button>
+	<button class="default-callback page action-page page-60 [get:class] [get:group8_class] [get:page60_class] [get:current1]">60</button>
+	<button class="default-callback page action-page page-61 [get:class] [get:group8_class] [get:page61_class] [get:current1]">61</button>
+	<button class="default-callback page action-page page-62 [get:class] [get:group8_class] [get:page62_class] [get:current1]">62</button>
+	<button class="default-callback page action-page page-63 [get:class] [get:group8_class] [get:page63_class] [get:current1]">63</button>
+	<button class="default-callback page action-page page-64 [get:class] [get:group8_class] [get:page64_class] [get:current1]">64</button>
+	
+	<!-- group 9 -->
+	<button class="default-callback page action-page page-65 [get:class] [get:group9_class] [get:page65_class] [get:current1]">65</button>
+	<button class="default-callback page action-page page-66 [get:class] [get:group9_class] [get:page66_class] [get:current1]">66</button>
+	<button class="default-callback page action-page page-67 [get:class] [get:group9_class] [get:page67_class] [get:current1]">67</button>
+	<button class="default-callback page action-page page-68 [get:class] [get:group9_class] [get:page68_class] [get:current1]">68</button>
+	<button class="default-callback page action-page page-69 [get:class] [get:group9_class] [get:page69_class] [get:current1]">69</button>
+	<button class="default-callback page action-page page-70 [get:class] [get:group9_class] [get:page70_class] [get:current1]">70</button>
+	<button class="default-callback page action-page page-71 [get:class] [get:group9_class] [get:page71_class] [get:current1]">71</button>
+	<button class="default-callback page action-page page-72 [get:class] [get:group9_class] [get:page72_class] [get:current1]">72</button>
+	
+	<!-- group 10 -->
+	<button class="default-callback page action-page page-73 [get:class] [get:group10_class] [get:page73_class] [get:current1]">73</button>
+	<button class="default-callback page action-page page-74 [get:class] [get:group10_class] [get:page74_class] [get:current1]">74</button>
+	<button class="default-callback page action-page page-75 [get:class] [get:group10_class] [get:page75_class] [get:current1]">75</button>
+	<button class="default-callback page action-page page-76 [get:class] [get:group10_class] [get:page76_class] [get:current1]">76</button>
+	<button class="default-callback page action-page page-77 [get:class] [get:group10_class] [get:page77_class] [get:current1]">77</button>
+	<button class="default-callback page action-page page-78 [get:class] [get:group10_class] [get:page78_class] [get:current1]">78</button>
+	<button class="default-callback page action-page page-79 [get:class] [get:group10_class] [get:page79_class] [get:current1]">79</button>
+	<button class="default-callback page action-page page-80 [get:class] [get:group10_class] [get:page80_class] [get:current1]">80</button>
+	
+	<!-- group 11 -->
+	<button class="default-callback page action-page page-81 [get:class] [get:group11_class] [get:page81_class] [get:current1]">81</button>
+	<button class="default-callback page action-page page-82 [get:class] [get:group11_class] [get:page82_class] [get:current1]">82</button>
+	<button class="default-callback page action-page page-83 [get:class] [get:group11_class] [get:page83_class] [get:current1]">83</button>
+	<button class="default-callback page action-page page-84 [get:class] [get:group11_class] [get:page84_class] [get:current1]">84</button>
+	<button class="default-callback page action-page page-85 [get:class] [get:group11_class] [get:page85_class] [get:current1]">85</button>
+	<button class="default-callback page action-page page-86 [get:class] [get:group11_class] [get:page86_class] [get:current1]">86</button>
+	<button class="default-callback page action-page page-87 [get:class] [get:group11_class] [get:page87_class] [get:current1]">87</button>
+	<button class="default-callback page action-page page-88 [get:class] [get:group11_class] [get:page88_class] [get:current1]">88</button>
+	
+	<!-- show if there are more groups of pages -->
+	<button class="default-callback next-pages action-nextpages [get:class] [get:has_next_pages]">...</button>
+	
+	<!-- next -->
+	<button class="default-callback next action-next [get:class] [get:next_class]">&gt;</button>
+	<!-- ff -->
+	<button class="default-callback fforward action-ff [get:class] [get:fforward_class]">&gt;&gt;</button>
+	
+</div>

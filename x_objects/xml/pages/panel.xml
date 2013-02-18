@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel doctype="html5">
+	<head>
+		<title>x-objects application panel</title>	
+		<!-- html5 reset default css include -->
+		<css>[var:webroot][var:directory_name]/css/html5reset.css</css>
+		<!-- x-objects css library -->
+		<css>[var:webroot][var:directory_name]/css/x-objects.css</css>
+		<css>[var:webroot][var:directory_name]/css/x-panel.css</css>	
+		<script src="[var:webroot][var:directory_name]/js/jquery-1.6.3.js"/>
+		<script src="[var:webroot][var:directory_name]/js/jquery-ui-1.8.12.custom.min.js"/>
+		<script src="[var:webroot][var:directory_name]/js/xo-base.js"/>
+		<script>
+		</script>
+  	</head>
+ 	<body>
+		<div class="container">
+			<div class="x-panel">
+				<h1>x-objects panel (version 1.0)</h1>
+				<h2>container status</h2>
+				<ul>
+					<li>event logging: [obj:usage.log_enabled]</li>
+					<li>logged events: [obj:usage.num_events]</li>
+					<li>screen debugging: [obj:usage.debug]</li>
+				</ul>
+				<h2>performance</h2>
+				<ul>
+					<li>average page loading time: [obj:usage.avg_pg_load_time]</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</panel>

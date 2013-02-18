@@ -1,0 +1,19 @@
+<!-- pagination element, reusable on any page -->
+<div class="pagination [@class] [var:show_pagination] page-1 key-[@skey]">
+
+	<!-- show a status page -->
+	<span class="page-status">Viewing records 1 to [obj:service.page_max] of [obj:service.record_max]</span>
+	
+	<!-- next button -->
+	<button class="key-[var:service_key] paginate page-next [var:show_next] key-[@skey] default-callback"></button>
+	
+	<!-- prev button -->
+	<button class="key-[var:service_key] paginate page-prev [var:show_prev] key-[@skey] default-callback"></button>
+
+	<!-- hidden inputs -->
+	<input type="hidden" name="page_first" id="page_first" value="1"/>
+	<input type="hidden" name="page_last" id="page_last" value="[var:page_max]"/>
+	<input type="hidden" name="record_last" id="record_last" value="[var:record_max]"/>
+	
+
+</div>

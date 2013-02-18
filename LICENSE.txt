@@ -1,0 +1,7 @@
+You are free to use all of this software under the GNU General Public License, v3:
+
+https://www.gnu.org/licenses/gpl.html
+
+In some specific cases, you may be using open source software that was written or provided
+by another person, group or organization.  In these cases, refer to the licensing
+terms proposed in the source code annotation, or in the affixed license documents

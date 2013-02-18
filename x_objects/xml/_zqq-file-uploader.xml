@@ -1,0 +1,34 @@
+<div class="file-upload-wrapper">
+    <div id="[get:html_id]" class="edit xo-file-uploader ii-[get:html_id]_image_file">
+        <noscript>
+            <p>Please enable JavaScript to use file uploader.</p>
+            <!-- or put a simple form for upload here -->
+        </noscript>
+    </div>
+    <input type="hidden" name="[get:html_id]_image_file" id="[get:html_id]_image_file" value=""/>
+    <script>
+        &#36$script.ready('jquery',function(){
+        var xo_image_uploader = [];
+        var debug = ( '[get:debugging]' == 'yes')?true:false;
+        if( $('.xo-file-uploader').length){
+        // get name of image input from class
+        var m = /ii-([a-z|\_]+)/.exec( $(this).attr('class'));
+        var ii = m?m[1]:'uploaded_file';
+        var id = $(this).attr('id');
+        xo_image_uploader[id] = new qq.FileUploader({
+        // pass the dom node (ex. $(selector)[0] for jQuery users)
+        element: document.getElementById(id),
+        // path to server-side upload script
+        action: '[get:server_action]',
+        onComplete: function(id, file_name, json){
+        if ( json.success == true){
+        if ( debug) console.log( json);
+        $('#'+ii).val(json.filename);
+        }
+        },
+        allowedExtensions: [ "jpg", "png","gif"]
+        });
+        }
+        });
+    </script>
+</div>

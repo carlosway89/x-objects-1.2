@@ -1,0 +1,74 @@
+<div class="management-console [var:logged_in_class]">
+	<div class="left">
+		<a href="[var:webroot]manage">
+			<img class="adminlogo" border="0" width="150" 
+			src="[var:logo_src]" alt="logo"/>
+		</a>
+		<div class="services">
+			<!-- show services as an x-collection, which is a collection of objects -->
+			<x-collection 
+				key="services"
+				view="service-link-view"
+			/>
+			<a  class="manage-logout link" href="[var:webroot]logout" >logout</a><!-- end -->
+
+			<!--
+			<form class="Search" name="Search" id="Search" method="POST" action="[var:webroot]manage/search">
+
+				<input type="text" name="SearchTerm" id="SearchTerm" class="Search"/>
+				<input class="search-icon" type="image" src="/trunk/images/search.png" />
+				
+				
+			</form>
+			-->
+		</div>
+		</div><!-- end AdminLeftContent -->
+		
+	<div class="right authorized [var:user_type]">
+	
+		<div class="ajax-container">
+			<img style="display: none;" class="ajax" src="[var:webroot]images/ajax-loader-admin.gif"/>
+		</div>
+		
+		<div class="notice"></div>
+		
+		<!-- service view -->
+		<div class="services managed-services [var:services_visible] key-[obj:service.key]">
+			<!-- load service based on name (if any ) -->
+			<x-object 
+				key="service-manage-list"
+				service="[obj:service.key]"
+				service_name="[obj:service.name]"
+			/>
+		</div>
+		
+		<!-- individual record -->
+		<div class="services [var:one_visible]">
+			[var:one_view]
+		</div>
+		
+		<!-- search -->
+		<div class="search-results [var:search_visible]">
+			[var:search_results]
+		</div>
+		
+		<!-- service-wide-controls -->
+		<div class="service-group-control [var:services_visible] xo-round3">
+			<div class="service-control">
+				<label class="service-control" for="show-deleted">Show deleted items:</label>
+				<input type="checkbox" name="show_deleted" id="show_deleted" checked="checked" />
+			</div>
+			<!-- delete all records of this type -->
+			<div class="service-control">
+				<button class="service-control sc-empty [obj:service.empty_enabled_class]">Delete ALL [obj:service.display_name]</button>
+				<button class="service-control sc-cancel" style="display:none;">Cancel</button>
+				<div class="sc-warning"></div>
+			</div>
+		</div>
+	
+	
+	</div><!-- end AdminRightContent -->
+
+	<div  class="footer" >Powered by X-Objects
+	</div><!-- end -->
+</div>

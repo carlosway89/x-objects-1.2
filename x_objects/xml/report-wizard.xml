@@ -1,0 +1,72 @@
+<!--
+    This is the main view file for the report wizard, which can be embedded into any project to report on various record types
+
+-->
+
+<div class="report-wizard">
+    <script id="column_template" type="text/x-jquery-tmpl">
+        <option value="${value}">${name}</option>
+    </script>
+    <script id="period_control" type="text/x-jquery-tmpl">
+        <option value="${value}">${name}</option>
+    </script>
+    <script id="search_control" type="text/x-jquery-tmpl">
+        <option value="${value}">${name}</option>
+    </script>
+    <div class="wizard-step step1">
+        <h2>Select Record Type</h2>
+        <x-select
+            key="report_record_type"
+            values="model"
+            names="name"
+            query="all"
+            id="record_type"
+            class="report-wizard-select"
+            multiple="no"
+            />
+    </div>
+    <div class="wizard-step step2" style="display:none;">
+        <h2>Select Columns</h2>
+        <select id="report_columns" class="report-wizard-columns" multiple="6">
+            <option value="">Please choose...</option>
+        </select>
+    </div>
+    <div class="wizard-step step3" style="display:none;">
+        <h2>Please choose reporting period</h2>
+        <!-- the reporting period control is populated after user selects the record type -->
+        <select id="pcontrol" class="report-wizard-period-control report-wizard-select">
+            <option value="">Please choose...</option>
+        </select>
+        <select id="period" class="report-wizard-periodicity report-wizard-select">
+            <option value="">Please choose...</option>
+            <option value="human_language_today">Today</option>
+            <option value="human_language_last_24">Last 24 Hours</option>
+            <option value="human_language_yesterday">Yesterday</option>
+            <option value="human_language_tomorrow">Tomorrow</option>
+            <option value="human_language_last_7d">Last 7 Days</option>
+            <option value="human_language_this_week">This Week</option>
+            <option value="human_language_last_week">Last Week</option>
+            <option value="human_language_next_week">Next Week</option>
+            <option value="human_language_this_month">This Month</option>
+            <option value="human_language_last_month">Last Month</option>
+            <option value="human_language_next_month">Next Month</option>
+            <option value="human_language_this_year">This Year</option>
+            <option value="human_language_last_year">Last Year</option>
+            <option value="human_language_next_year">Next Year</option>
+            <option value="human_language_all_time">All Time (*)</option>
+        </select>
+    </div>
+    <div class="wizard-step step3b" style="display:none;">
+        <h2>(Optional) Narrow your search using text fields</h2>
+        <select id="text_search" class="report-wizard-text-search report-wizard-select">
+            <option value="">Please choose...</option>
+        </select>
+        <input disabled="disabled" id="search_term" class="report-wizard-input" placeholder="type search term"/>
+    </div>
+    <div class="wizard-step step3c" style="display:none;">
+        <button class="wizard-go" id="wizard_go">Go</button>
+    </div>
+    <div class="wizard-step step4" style="display:none;">
+        <div class="wizard-data-receptacle"></div>
+    </div>
+</div>

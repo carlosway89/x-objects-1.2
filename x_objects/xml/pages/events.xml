@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<home doctype="html5">
+
+	<head>
+    		
+    		<title>Event Log Manager | [var:app_name]</title>
+			<!-- html5 reset default css include -->
+			<css>[var:webroot][var:directory_name]/css/html5reset.css</css>
+			<!-- x-objects css library -->
+			<css>[var:webroot][var:directory_name]/css/x-objects.css</css>
+			<css>[var:webroot][var:directory_name]/css/xevents.css</css>
+			<!-- indicate which xo js libraries to include -->
+			<js libs="jquery,jheartbeat,xo-base,xevents"/>		
+			<script>
+				$(function(){
+					$("div.event-log").xevents( { "use_rest" : false });
+				});
+			</script>
+    
+  	</head>
+  	
+ 	<body>
+	
+		<div class="container">
+			<div class="event-log-controls xo-round3">
+				<button class="empty-log">Clear Event Log</button>
+			</div>
+			<div class="event-log xo-round3">Please wait while the event log initializes</div>
+		</div>
+    
+	</body>
+
+
+</home>

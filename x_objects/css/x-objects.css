@@ -1,0 +1,75 @@
+/* general behaviors */
+.pointable { cursor: pointer }
+
+/* rounded corners styles */
+
+.xo-round8 {
+ -webkit-border-radius: 8px; 
+     -moz-border-radius: 8px; 
+          border-radius: 8px; 
+          
+          
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+
+}
+.xo-round5 {
+
+  -webkit-border-radius: 5px; 
+     -moz-border-radius: 5px; 
+          border-radius: 5px; 
+          
+          
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+
+}
+
+.xo-round3 {
+
+  -webkit-border-radius: 3px; 
+     -moz-border-radius: 3px; 
+          border-radius: 3px; 
+          
+          
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+
+}
+
+/* lightgray 5px shadow */
+.xo-shadow5-lightgray {
+
+  -webkit-box-shadow: 5px 5px 5px lightgray; 
+     -moz-box-shadow: 5px 5px 5px lightgray; 
+          box-shadow: 5px 5px 5px lightgray; 
+
+
+}
+
+/* black 5px shadow */
+.xo-shadow5-black {
+
+    -webkit-box-shadow: 5px 5px 5px #000000;
+    -moz-box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px #000000;
+
+
+}
+
+/* debugging */
+.x-debug {
+	height: auto;
+	overflow: hidden;
+	width: 100%;
+	background-color: lightgray;
+}
+
+/* hidden elements */
+.hidden {
+	display: none;
+}
+
+/* run a linethrough */
+.xo-linethrough {
+	text-decoration: line-through;
+	color: gray;
+}
+

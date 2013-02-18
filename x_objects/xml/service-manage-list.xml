@@ -1,0 +1,13 @@
+<div class="service-manage-list">
+	<div class="manage-title">[@service_name] Management</div>
+	<recordset
+		key="[@service]"
+		query="10 from page 1"
+		view="service-managed-list-view"
+		none-view="service-managed-none-view"
+	/>
+	<!-- newer version -->
+	<!-- <div>[obj:paginator.xhtml]</div> -->
+	
+</div>
+	
