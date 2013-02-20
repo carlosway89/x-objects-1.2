@@ -1,3 +1,9 @@
+Overview
+========
+
+This document will walk you through a basic installation and creation of a new X-Objects instance and application.
+
+
 To install:
 
 1) Copy /x_objects subdirectory (all contents) to your webroot
