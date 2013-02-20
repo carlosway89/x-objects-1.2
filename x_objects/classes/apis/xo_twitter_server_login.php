@@ -17,8 +17,8 @@ class xo_twitter_server_login {
     public function go(){
         global $container;
         $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
-        /* Build TwitterOAuth object with client credentials. */
-        $connection = new TwitterOAuth(
+        /* Build twitteroauth object with client credentials. */
+        $connection = new twitteroauth(
             (string)$this->config->consumer_key,
             (string)$this->config->consumer_secret);
 
@@ -51,8 +51,8 @@ class xo_twitter_server_login {
             header('Location: '.$loc);
         }
 
-        /* Create TwitteroAuth object with app key/secret and token key/secret from default phase */
-        $connection = new TwitterOAuth(
+        /* Create twitteroauth object with app key/secret and token key/secret from default phase */
+        $connection = new twitteroauth(
             (string)$this->config->consumer_key,
             (string)$this->config->consumer_secret,
             $_SESSION['oauth_token'],
