@@ -48,7 +48,7 @@ class xo_facebook_server_login {
                 // find local user
                 $username = $this->user->username? $this->user->username: "fbuser-".(string)new random_password(5);
                 if ( strlen($username)>20) $username = substr($username,0,20);
-                $me = new user("user_facebook_id='".$this->user->id."',username='$username',login_type='facebook'");
+                $me = new user("user_facebook_id='".$this->user->id."'");
                 if ( $me->exists){
                     $method = (string)$this->config->user_login_method;
                     // now login me in
