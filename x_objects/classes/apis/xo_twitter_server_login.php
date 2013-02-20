@@ -93,6 +93,9 @@ class xo_twitter_server_login {
                 $user->username = $tuser->screen_name;
                 $user->user_twitter_id = $tuser->id;
                 $user->save();
+                // set logged in
+                $method = (string)$this->config->user_login_method;
+                $user->$method();
                 // redirect
                 $loc = (string)$this->config->new_user_redirect;
                 header("Location: $loc/$user->id");
