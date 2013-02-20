@@ -6,7 +6,7 @@
  * 
  * To create a business object create a new subclass of this one.
  * @property $last_error string the last error from any operation
- * @property bool $exists Does this object correspond to an actual database record?
+ * @property $exists bool Does this object correspond to an actual database record?
  * @property $save_error string an error raised if last save operation failed
  * @property $delete_error string an error raised if last delete op failed
  * @property $as_array array representation of object
@@ -405,12 +405,7 @@ abstract class business_object extends data_object
 				return parent::__get( $what );
 			break;
 			
-			case 'xhtml':
-			
-				return $this->xhtml();
-				
-			break;
-			
+
 			default:
 			
 				// try matching by regex
@@ -419,7 +414,7 @@ abstract class business_object extends data_object
                 // get time in human terms
                 if ( preg_match('/human_([a-z|_]+)/',$what,$hits)){
                     $matched = true;
-                    $member= $matches[1];
+                    $member= $hits[1];
                     return new human_time( strtotime($this->$member));
                 }
 
