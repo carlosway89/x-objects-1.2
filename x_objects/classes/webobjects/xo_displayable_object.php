@@ -1,8 +1,23 @@
 <?php
 /**
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
- * Date: 05/02/13
- * Time: 09:40 AM
+ * A Displayable Object provides a convenient way to turn any object into
+ * one that can be rendered as a string for display purposes.
+ *
+ * This is done by wrapping the X-Object functionality around the new Object
+ *
+ * For example:
+ *
+ * class my_object extends xo_displayable_object{
+ *      public function __construct(){
+ *          $this->view = "some-view-file";
+ *          $this->object = $this;
+ *      }
+ * }
+ *
+ * echo (string) new my_object();
+ *
+ * Provides a simple and elegant solution for using Objects in your Ajax methods
+ *
  */
 class xo_displayable_object {
     protected $view = null;
