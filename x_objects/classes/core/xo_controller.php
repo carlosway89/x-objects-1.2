@@ -98,6 +98,7 @@ $controller_name = null;
 
      public function __construct(){
          $this->resources = new xo_resource_bundle("a_controller");
+
      }
  }
 ?>
