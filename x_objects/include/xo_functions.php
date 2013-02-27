@@ -18,4 +18,12 @@ function is_image($filename){
     return in_array( (string) new file_extension_for(strtolower($filename)),$images);
 }
 
+function canonical_url($url){
+    $result = null;
+    if (preg_match('/((ftp|http|https):\/\/)?((\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?)/',strtolower($url),$hits)){
+        $result = $hits[3];
+    }
+    return $result;
+}
+
 ?>
