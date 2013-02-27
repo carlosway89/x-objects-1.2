@@ -12,6 +12,8 @@ $controller_name = null;
  abstract class xo_controller extends magic_object {
      // controller resources (mainly for ajax)
      protected $resources = null;
+     // some public variables
+     public $pathroot = "";
  	/**
  	 * render a view
  	 * @param string $key the key to identify the view
@@ -97,6 +99,8 @@ $controller_name = null;
  	 public function is_active( $key ) { return $this->view_key == $key? "active":"";}
 
      public function __construct(){
+         global $webapp_location;
+         $this->pathroot = $webapp_location;
          $this->resources = new xo_resource_bundle("a_controller");
 
      }
