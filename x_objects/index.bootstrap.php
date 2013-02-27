@@ -38,7 +38,10 @@ $url_parts = explode('/',$parsed_url['path']);
 
 
 // get webroot and pathroot
-global $webroot, $pathroot, $directory_name;
+global $webroot, $pathroot, $directory_name,$xobjects_location;
+
+// load global functions
+require_once( $xobjects_location."include/xo_functions.php");
 
 // api call?
 if ( preg_match( '/^\/api/', $_SERVER['REQUEST_URI'] )){

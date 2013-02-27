@@ -1,1 +1,0 @@
-<fb:login-button>

@@ -66,7 +66,7 @@ $separator = $platform == 'win' ? ';' : ':';
 			
 			// handle modules
 			$modules = null;
-			if ( isset( $xml->modules ) )
+			if ( isset( $xml ) && $xml->modules )
 				$modules = $xml->modules->children();
 			if ( $modules )
 				foreach ( $xml->modules->children() as $module )
@@ -116,16 +116,4 @@ $separator = $platform == 'win' ? ';' : ':';
                 $$index = $value;
     }
 
-	
-	/*
-    echo "bootstrap.xobjects.php: about to create container...<br>";
-	try {
-		$tag = new xo_codetag( xo_basename(__FILE__),__LINE__,"bootstrap","main");
-		$container = x_objects::instance();
-		//$container->log( xevent::success, "$tag->event_format : x_objects bootstrap successfully loaded");
-	} catch ( Exception $e ) {
-		echo $tag->exception_format . " " . $e->getMessage()."<br>";
-		
-	}
-	*/
 ?>
