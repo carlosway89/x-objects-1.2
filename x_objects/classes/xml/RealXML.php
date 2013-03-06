@@ -34,8 +34,8 @@ class RealXML {
 		if ( Debugger::enabled() )
 			$this->debug = true;
 	
-		global $directory_name;
-		
+		global $directory_name,$xobjects_location;
+		$xobjects_location = $xobjects_location?$xobjects_location:guessed_location();
 		self::$paths = array( 
 			"." ,
 			@$webapp_location . "/app/xml", 
@@ -44,13 +44,12 @@ class RealXML {
 			@$webapp_location . "/app/xml/pages", 
 			
 			"",
-			PATHROOT . 'xml' , 
-			PATHROOT . $directory_name . '/xml',
-			"./xml" , 
+			$xobjects_location . '/xml' ,
+			"./xml" ,
 			"../xml" 
 			);
 			
-//			print_r( self::$paths);
+			//print_r( self::$paths);
 		
 		//echo (is_object( $obj_or_src))?"yes":$obj_or_src;
 		// if we got an object, just save it

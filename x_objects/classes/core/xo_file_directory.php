@@ -31,4 +31,11 @@ class xo_file_directory {
         }
         return $file;
     }
+
+    /**
+     * @return string the next entry in the directory
+     */
+    public function next(){
+        return $this->dir?$this->dir->read():null;
+    }
 }
