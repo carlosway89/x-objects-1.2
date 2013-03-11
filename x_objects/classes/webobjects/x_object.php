@@ -14,7 +14,12 @@ $resources = null;
 
 class x_object {
 
-	private $debug = false;
+    /**
+     * Public member grants direct access to the object in the view file
+     */
+    public $business_object = null;
+
+    private $debug = false;
 
 	// the xml
 	private $xml = null;
@@ -73,6 +78,7 @@ class x_object {
 	
 	//! return as html
 	public function html( $busObj = null,$log = false ) {
+        $this->business_object = $busObj;
 		global $container,$business_object,$page_vars,$resources;
       	$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         if ( $container->debug ) echo "$tag->event_format : generating html for this object, the business object is is ". get_class( $busObj) . "<br>\r\n";
