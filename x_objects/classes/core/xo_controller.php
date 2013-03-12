@@ -10,6 +10,8 @@ $controller_name = null;
  * base class to create new controllers
  */
  abstract class xo_controller extends magic_object {
+     // page vars
+     protected $page_vars = array();
      // controller resources (mainly for ajax)
      protected $resources = null;
      // some public variables
@@ -104,6 +106,10 @@ $controller_name = null;
          $this->pathroot = $webapp_location;
          $this->resources = new xo_resource_bundle("a_controller");
 
+     }
+     // public access to page vars
+     public function page_vars(){
+         return $this->page_vars;
      }
  }
 ?>
