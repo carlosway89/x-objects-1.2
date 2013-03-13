@@ -1,6 +1,9 @@
 <?php 
 /**
- * A data_object allows for access to data abstraction layer, and is typically the parent class for a business_object().
+ * A Data Object is a low level Object tied closely to the database,
+ * which allows for access to data abstraction layer, and is typically the
+ * parent class for a Business Object.
+ *
  * @property string $save_error the error occurring from last save operation
  */
 abstract class data_object extends AttributedObject
@@ -526,12 +529,12 @@ abstract class data_object extends AttributedObject
 		
 	}
 	
-	//! set the actions for the object
+	/* set the actions for the object
 	protected function setActions( $actions) { $this->actions = $actions; }
 	
 	//! get the actions for this object
 	public function getActions() { return $this->actions; }
-	 
+	 */
 	public function getColsAsString() {
 		$retString = '';
 		for ($i=0; $i<count($this->DBCols); $i++) 

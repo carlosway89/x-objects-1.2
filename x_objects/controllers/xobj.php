@@ -156,8 +156,17 @@ class xobj_controller extends xo_controller {
                     $result['error'] = $o->delete_error;
                     break;
                 default:
-                    $result['result'] = $o->$a()?"success":"error";
-                    $result['error'] = $o->last_error;
+                    /**
+                     * making more flexible, so method can return types
+                     * other than bool
+                     */
+                    $results = $o->$a();
+                    if ( is_array($results)){
+                        $result['results'] = $results;
+                    } else {
+                        $result['result'] = $results?"success":"error";
+                        $result['error'] = $o->last_error;
+                    }
                     break;
             }
 

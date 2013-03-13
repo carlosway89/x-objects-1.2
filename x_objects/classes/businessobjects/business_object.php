@@ -503,10 +503,11 @@ abstract class business_object extends data_object
 		self::$actionTargetId = preg_replace ('/#/' , '' , $id ); 
 	}
 	
-	//! gets the action target id for action buttons
+	/* gets the action target id for action buttons
 	public static function getActionTargetId() { 
 		return self::$actionTargetId; 
 	}
+	*/
 	
 	//! save the object, managing business rules
 	public function save( $mode = Persistable::SAVE_MODE_DIRTY) {

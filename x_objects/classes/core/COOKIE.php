@@ -1,4 +1,4 @@
-<?php
+    <?php
 /** special class to easily manage COOKIE super global
  *
  * @author David Owen Greenberg <david.o.greenberg@gmail.com>
