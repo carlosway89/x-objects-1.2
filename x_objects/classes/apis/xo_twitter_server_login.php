@@ -98,7 +98,7 @@ class xo_twitter_server_login {
                 $user->$method();
                 // redirect
                 $loc = (string)$this->config->new_user_redirect;
-                header("Location: $loc/$user->id");
+                header("Location: $loc");
                 return true;
             }
         } else {

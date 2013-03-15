@@ -71,7 +71,7 @@ class xo_facebook_server_login {
                         $method = (string)$this->config->user_login_method;
                         $me->$method();
                         $loc = (string)$this->config->new_user_redirect;
-                        header("Location: $loc/$me->id");
+                        header("Location: $loc");
                         return;
                     } else {
                         echo "failed to save me! $me->save_error (username: $username)<br>";

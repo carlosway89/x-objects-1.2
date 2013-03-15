@@ -11,7 +11,7 @@
 abstract class xo_router {
     /**
      * Return a custom route
-     * @param $key original route requested by user
+     * @param $key string original route requested by user
      * @return string route, or null if none
      */
     abstract public function route_for($key);
