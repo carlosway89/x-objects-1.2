@@ -124,10 +124,17 @@ if ( preg_match( '/^\/api/', $_SERVER['REQUEST_URI'] )){
             $class = $route."_controller";
             $controller = new $class;
             $method = "default_action";
-            if ( isset($url_parts[2]) && $url_parts[2]!="")
-                $method = $url_parts[2];
+            if ( $container->debug) echo "$tag->event_format: URL Parts are ".(string) new xo_array( $url_parts)."<br>\r\n";
+            if ( $container->debug) echo "$tag->event_format: URI is $uri<br>\r\n";
+            if ( isset($url_parts[1]) && $url_parts[1]!="")
+                $method = $url_parts[1];
             elseif ($uri->part(2)!= "")
                 $method = $uri->part(2);
+            else {
+                if ( $container->debug) echo "$tag->event_format: NO explicit method found for this controller,fallback to default<br>\r\n";
+
+            }
+
             if ( $container->debug) echo "$tag->event_format: called method was $method<br>\r\n";
             $controller->$method();
         } catch ( Exception $e){

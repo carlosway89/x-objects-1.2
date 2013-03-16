@@ -33,7 +33,12 @@ final class REQUEST_URI {
 		return $part;
 	}
     public static function create(){ $c = __CLASS__; return new $c(); }
-
+    public function __toString(){
+        $str = '';
+        $parts = explode('/', $_SERVER['REQUEST_URI']);
+        foreach ( $parts as $part) $str .= $part. ",";
+        return $str;
+    }
 }
 
 ?>
