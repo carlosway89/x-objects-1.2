@@ -10,7 +10,7 @@ class xo_url {
         $url = strtolower($url);
 
         $regex =
-            '/^((https?):\/\/)?'.                                         // protocol
+            '/^((https?):\/\/){1}'.                                         // protocol
             '(([a-z0-9$_\.\+!\*\'\(\),;\?&=-]|%[0-9a-f]{2})+'.         // username
             '(:([a-z0-9$_\.\+!\*\'\(\),;\?&=-]|%[0-9a-f]{2})+)?'.      // password
             '@)?(?#'.                                                  // auth requires @
