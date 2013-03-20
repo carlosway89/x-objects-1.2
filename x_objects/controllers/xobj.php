@@ -150,6 +150,7 @@ class xobj_controller extends xo_controller {
                     $deletor = $this->uri->part(6)?(int)$this->uri->part(6):0;
                     $result['result'] = $o->safe_delete($deletor)?"success":"error";
                     $result['error'] = $o->delete_error;
+                    $result['message'] = "The $c was deleted";
                 break;
                 case 'delete':
                     $result['result'] = $o->delete()?"success":"error";
