@@ -93,7 +93,13 @@ if ( preg_match( '/^\/api/', $_SERVER['REQUEST_URI'] )){
         $controller = new $class;
         $method = isset($url_parts[2])?$url_parts[2]: ($uri->part(2)?$uri->part(2):"default_action");
         if ( $container->debug) echo "$tag->event_format: called method was $method<br>\r\n";
-        $controller->$method();
+        try {
+            $controller->$method();
+        } catch (Exception $e){
+            $exception_span = '<div style="position: absolute;z-index:100;margin: 5px;padding: 10px; font-family: verdana,sans-serif;width:360px;height:auto;background-color: #1f1f1f;color:white !important">';
+            $exception_span .= "<h1>X-Objects says (1):</h1><p>Something isn't quite right here:</p>";
+            echo $exception_span. "<p>".$e->getMessage(). "</p></div>";
+        }
     }
 
     elseif ( file_exists( $controllers[0] ) ){
