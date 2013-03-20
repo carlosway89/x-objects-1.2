@@ -72,8 +72,11 @@ $controller_name = null;
  	 * @return mixed the stuff or null if nothing found
  	 */
  	 public function __get( $what){
-          global $container,$webapp_location;
+          global $container,            // x-object instance
+                 $webapp_location,      // root of this webapp
+                 $controller_name;      // name of current controller
  	 	switch( $what ){
+            case 'controller_name': return $controller_name; break;
               case 'web_location': return $webapp_location; break;
               case 'ses': return new SESSION; break;
               case 'files': return new FILES; break;
