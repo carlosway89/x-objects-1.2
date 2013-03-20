@@ -76,7 +76,7 @@ $controller_name = null;
                  $webapp_location,      // root of this webapp
                  $controller_name;      // name of current controller
  	 	switch( $what ){
-            case 'controller_name': return get_class(); break;
+            case 'controller_name': return get_called_class(); break;
               case 'web_location': return $webapp_location; break;
               case 'ses': return new SESSION; break;
               case 'files': return new FILES; break;
