@@ -55,8 +55,9 @@ final class SQLCreator{
 
             // IS NULL
             if ( preg_match ('/\sIS\sNULL/', $Condition ) ){
+                if ($container->debug ) echo "$tag->event_format: splitter is IS for $Condition<br>\r\n";
                 $splitter = 'IS';
-                continue;
+                //continue;
             }
             // if just a 1, continue
 			if ( preg_match ('/^[1]{1}$/', $Condition ) )
@@ -106,6 +107,8 @@ final class SQLCreator{
 			
 			// split the condition into components
 			$NVPair = explode( $splitter, $Condition );
+            if ( $container->debug && $container->debug_level >1)
+                echo "$tag->event_format: NVPair is ". new xo_array($NVPair). "<br>\r\n";
 			// throw an exception if necessary
 			global $container;
 			if ( count($NVPair)< 2)
