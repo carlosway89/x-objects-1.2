@@ -13,6 +13,8 @@
  */
 abstract class business_object extends data_object 
 	implements business_interface, Abstractable {
+    // last message from any operation
+    public $last_message = '';
     // resources
     public $bo_resources = null;
     // last class error
@@ -263,7 +265,7 @@ abstract class business_object extends data_object
 			
 			default:
                 // just set an error
-                $this->last_error = "$tag->event_format : call to unknown method $func(), possibly from child class (".get_called_class().")";
+                $this->last_error = "$func(): I can't find out any information about this method. Are you sure this is defined for ".get_called_class()."?";
                 return false;
 			break;
 		}

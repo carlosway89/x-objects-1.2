@@ -1,5 +1,18 @@
 <?php
 /**
+ *
+ * Controller for access to X-Objects via REST URLs (forming a REST API with responses
+ * in JSON and xHTML)
+ *
+ * /xobj/c/<my_model>/xhtml/<my-view>
+ * /xobj/c/<my_model>/json
+ *
+ * Create a new Record (Object), given its model.  Output as specified either JSON or XHTML
+ *
+ * Parameters: json (encoded JSON string): values to set for new Record
+ *
+ *
+ *
  * User: "David Owen Greenberg" <owen.david.us@gmail.com>
  * Date: 06/11/12
  * Time: 04:58 PM
@@ -167,6 +180,7 @@ class xobj_controller extends xo_controller {
                     } else {
                         $result['result'] = $results?"success":"error";
                         $result['error'] = $o->last_error;
+                        $result['message'] = $o->last_message;
                     }
                     break;
             }
