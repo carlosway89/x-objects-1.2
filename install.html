@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: #1e1e1e;
+                color: white;
+                font-family: "Bitstream Charter",sans-serif;
+            }
+            h1,h2,h3,h4,h5,h6 {
+                float: left;
+                width: 100%;
+            }
+            img {
+                max-width: 200px;
+            }
+            ol {
+                float: left;
+                list-style-position: outside;
+            }
+            li {
+                margin-bottom: 20px;
+                float: left;
+            }
+            p {
+                margin: 0;
+                float: left;
+                clear: both;
+            }
+            pre {
+                display: block;
+                float: left;
+                padding: 5px;
+                background-color: darkolivegreen;
+                color: black;
+                clear: both;
+            }
+            .container {
+                width: 960px;
+                margin: 0 auto;
+                height: auto;
+                overflow: hidden;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <img src="assets/logo.png"/>
+            <h1>X-Objects 1.2 Installation Instructions</h1>
+            <h2>Overview</h2>
+            <p>This document will walk you through a basic installation and creation of a new X-Objects instance and application.
+            </p>
+            <h2>Installation</h2>
+            <p>Follow these steps to install.  Send questions, problems, bugs, or feedback to support@x-objects.org</p>
+            <ol>
+                <li><p>Download this entire repository onto the system where you will run one or more web applications.</p>
+                    <p>We recommend installing into a directory that is accessible to web processes, but NOT in the webroot or its
+                    sub-directories.</p>
+                    <p>For example, if your web server runs as:</p>
+                    <pre>/home/webuser/www/</pre>
+                    <p>Then consider installing into:</p>
+                    <pre>/home/webuser/x_objects/</pre>
+                </li>
+                <li><p>Create a new mysql database, and a user with dba-level privileges.  Make a note of the username and password for later.</p></li>
+                <li>Import the script /x_objects/sql/core.sql into your new database</li>
+                <li>
+                    <p>From the command-line you can create a new web application as follows:</p>
+                    <pre>$ cd /home/webuser/www/
+$ php5 /home/webuser/x_objects/xobjects.php webapp myapp</pre>
+                    <p>This will build your webapp in /home/webuser/www/myapp</p>
+                </li>
+                <li>
+                    <p>Edit your app's index file and make sure the paths are correct; they should have been set by the installer:</p>
+                    <p>Edit /home/webuser/www/myapp/index.php and check the values of $xobjects_location and $webapp_location.  For this
+                example, the values would be:</p>
+                <pre>
+$xobjects_location = "/home/webuser/x_objects/x_objects/";
+$webapp_location = "/home/webuser/www/myapp";
+                </pre>
+                </li>
+                <li>
+                    <p>Make sure you have updated any virtual host information so you can invoke your web app directly</p>
+                </li>
+            </ol>
+        </div>
+    </body>
+</html>
