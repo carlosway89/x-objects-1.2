@@ -56,26 +56,48 @@ CREATE TABLE IF NOT EXISTS `website` (<br/>
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
                 </div>
                 </li>
+                <li>Insert a new row into your database with the following values:
+                <div class="code">
+                    INSERT INTO `test`.`website` (`label`, `url`) VALUES ('Duck Duck Go Web Search', 'http://duckduckgo.com');
+                </div></li>
                 <li>
                     <span>Create the Model for this Table.  The easiest way to do this is to copy the file</span>
                     <span class="filename">$x_objects/templates/business_object_template.php</span>
                     <span>to</span>
                     <span class="filename">$webapp/app/models/website.php</span>
                     <span>Then edit the file and set the values accordingly</span>
-                    <pre>
-class website extends business_object {
-	// data source specification
-	const datasource =
-		"&lsaquo;datasource&rsaquo;
-                        &lsaquo;name&rsaquo;website&lsaquo;/name&rsaquo;
-                        &lsaquo;type&rsaquo;table&lsaquo;/type&rsaquo;
-                        &lsaquo;alias&rsaquo;website&lsaquo;/alias&rsaquo;
-                        &lsaquo;key&rsaquo;id&lsaquo;/key&rsaquo;
-                        &lsaquo;read_only&rsaquo;date_added&lsaquo;/read_only&rsaquo;
-                        &lsaquo;required&rsaquo;url&lsaquo;/required&rsaquo;
-                        &lsaquo;/datasource&rsaquo;";
+                    <div class="code">
+class website extends business_object {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// data source specification<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const datasource =<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lsaquo;datasource&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;name&rsaquo;website&lsaquo;/name&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;type&rsaquo;table&lsaquo;/type&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;alias&rsaquo;website&lsaquo;/alias&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;key&rsaquo;id&lsaquo;/key&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;read_only&rsaquo;date_added&lsaquo;/read_only&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;required&rsaquo;url&lsaquo;/required&rsaquo;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;/datasource&rsaquo;";<br/>
 . . .
-                    </pre>
+                    </div>
+                </li>
+                <li><span>Create a new Controller called <strong>Websites</strong>.  The easiest way to do this is to copy</span>
+                    <span class="term">$webapp</span><span class="filename">/app/controllers/home.php</span>
+                    <span>to</span>
+                    <span class="term">$webapp</span><span class="filename">/app/controllers/websites.php</span>
+                    <span>Then edit the file as follows:</span>
+                    <div class="code">
+class website_controller extends xo_controller {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public function default_action(){<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// begin space where you'll insert your code<br/>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// end space where you'll insert your code<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->layout = "skeleton";<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->render('websites');<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}
+                    </div>
+                    <span>As you can see, we've marked some space where you'll be entering your practice code</span>
                 </li>
             </ol>
         </div>

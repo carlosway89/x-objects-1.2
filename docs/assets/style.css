@@ -61,6 +61,7 @@ span {
     font-family: courier,sans-serif;
     font-weight: bold;
     color: lightblue;
+    margin-top: 3px;
 }
 
 .filename {
