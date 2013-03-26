@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Documentation | X-Objects M/V/C Framework for PHP and jQuery</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <img src="assets/logo.png"/>
+            <h1>Welcome to X-Objects 1.2</h1>
+            <h2>Overview</h2>
+            <p>X-Objects allows you to build Applications and Websites for Desktop and Mobile use
+            quickly and easily.  The Framework features an ample library of PHP Objects to quickly
+            construct complex functionality as simple Web Components, as well as third party Components
+            and Frameworks like Skeleton (http://getskeleton.com) and jQuery UI (http://ui.jquery.com)
+            to facilitate rapid and elegant UI Development.
+            </p>
+            <h2>Getting Started</h2>
+            <p>The following Guides will help you get started more quickly with X-Objects.  We have
+                numbered them, as it might be more beneficial to follow in the order prescribed.
+            </p>
+            <ol>
+                <li><a href="install.html">Installing X-Objects (creating your first App)</a></li>
+                <li><a href="models.html">Working with Models and Business Objects</a></li>
+                <li><p>Create a new mysql database, and a user with dba-level privileges.  Make a note of the username and password for later.</p></li>
+                <li>Import the script /x_objects/sql/core.sql into your new database</li>
+                <li>
+                    <p>From the command-line you can create a new web application as follows:</p>
+                    <pre>$ cd /home/webuser/www/
+$ php5 /home/webuser/x_objects/xobjects.php webapp myapp</pre>
+                    <p>This will build your webapp in /home/webuser/www/myapp</p>
+                </li>
+                <li>
+                    <p>Edit your app's index file and make sure the paths are correct; they should have been set by the installer:</p>
+                    <p>Edit /home/webuser/www/myapp/index.php and check the values of $xobjects_location and $webapp_location.  For this
+                example, the values would be:</p>
+                <pre>
+$xobjects_location = "/home/webuser/x_objects/x_objects/";
+$webapp_location = "/home/webuser/www/myapp";
+                </pre>
+                </li>
+                <li>
+                    <p>Make sure you have updated any virtual host information so you can invoke your web app directly</p>
+                </li>
+            </ol>
+        </div>
+    </body>
+</html>

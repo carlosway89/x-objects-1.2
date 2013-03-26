@@ -1,0 +1,82 @@
+body {
+    background-color: #1e1e1e;
+    color: white;
+    font-family: "Bitstream Charter",sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    float: left;
+    width: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 200px;
+}
+ol,ul {
+    float: left;
+    list-style-position: outside;
+    clear: left;
+}
+li {
+    margin-bottom: 20px;
+    float: left;
+    clear: both;
+    width: 100%;
+}
+p {
+/*    margin: 0; */
+    float: left;
+    clear: both;
+}
+pre {
+    display: block;
+    float: left;
+    padding: 5px;
+    background-color: burlywood;
+    color: black;
+    clear: both;
+    font-size: 12pt;
+}
+
+span {
+    float: left;
+    margin-right: 5px;
+}
+.container {
+    width: 960px;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+}
+
+.term {
+    font-family: courier,sans-serif;
+    font-weight: bold;
+    color: lightblue;
+}
+
+.filename {
+    color: green;
+    font-weight: bold;
+    font-family: courier,sans-serif;
+    margin-top: 3px;
+}
+
+.code {
+    float: left;
+    padding: 5px;
+    font-family: courier,sans-serif;
+    clear: both;
+    font-size: 12pt;
+    background-color: darkslategray;
+    margin: 10px;
+    line-height: 25px;
+}

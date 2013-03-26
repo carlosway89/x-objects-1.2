@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Models and Business Objects | X-Objects Web Application Framework</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <img src="assets/logo.png"/>
+            <h1>Models and Business Objects</h1>
+            <h2>Overview</h2>
+            <p>This Tutorial will help you understand basic concepts around Models and Business Objects.
+            In X-Objects, these terms are now more-or-less interchangeable.  You are probably already familiar
+            with the concept of a Model, from the M/V/C Architecture.  In this context, you can think of a
+                Business Object as a Model with some extra potency, some capabilities that lie more within
+                the Business Layer.  This will make more sense as we go along.
+            </p>
+            <h2>Terminology and Definitions</h2>
+            <p>Throughout this lesson the following terms and definitions apply</p>
+            <ul>
+                <li><span class="term">$webroot</span>: points to the root of your application install.  <br/><span>For example
+                </span><pre>/var/www/myapp</pre></li>
+                <li><span class="term">$x_objects</span>: points to the root of your X-Objects directory.  <br/><span>For example
+                </span><pre>/home/x_objects/x_objects-1.2/</pre></li>
+            </ul>
+            <h2>Setting up your MySQL Database</h2>
+            <p>Whether hosting your App locally on your own workstation, or within a shared or private hosted
+                environment, you'll need to create a new MySQL database, along with a user who has enough
+                privileges to read the data rows and interact accordingly.
+            </p>
+            <ol>
+                <li><span>Open the file</span><span class="filename"><span class="term">$webroot</span>/app/xml/x-objects.xml</span><span> for editing</span></li>
+                <li><span>Edit the database section, placing the values according to your own MySQL database:</span>
+                <div class="code">
+                    &lsaquo;database&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;database&rsaquo;my_database_name&lsaquo;/database&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;host&rsaquo;mydbhost.mydomain.com&lsaquo;/host&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;username&rsaquo;my_database_user&lsaquo;/username&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;password&rsaquo;my_database_password&lsaquo;/password&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;socket&rsaquo;&lsaquo;/socket&rsaquo;<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lsaquo;port&rsaquo;3306&lsaquo;/port&rsaquo;<br/>
+                    &lsaquo;/database&rsaquo;
+                </div>
+                <p>Note that the Socket and Port settings are only used when a Socket must be used, or when using
+                a non-standard Port</p>
+                </li>
+                <li>Within the database you have created, add the following table structure:
+                <div class="code">
+CREATE TABLE IF NOT EXISTS `website` (<br/>
+&nbsp;  `id` int(11) NOT NULL AUTO_INCREMENT,<br/>
+                    &nbsp;  `label` varchar(50) DEFAULT NULL,<br/>
+                    &nbsp;`url` varchar(100) NOT NULL,<br/>
+                    &nbsp;`date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP<br/>
+                    &nbsp;PRIMARY KEY (`id`),<br/>
+                    &nbsp;UNIQUE KEY `url` (`url`)<br/>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+                </div>
+                </li>
+                <li>
+                    <span>Create the Model for this Table.  The easiest way to do this is to copy the file</span>
+                    <span class="filename">$x_objects/templates/business_object_template.php</span>
+                    <span>to</span>
+                    <span class="filename">$webapp/app/models/website.php</span>
+                    <span>Then edit the file and set the values accordingly</span>
+                    <pre>
+class website extends business_object {
+	// data source specification
+	const datasource =
+		"&lsaquo;datasource&rsaquo;
+                        &lsaquo;name&rsaquo;website&lsaquo;/name&rsaquo;
+                        &lsaquo;type&rsaquo;table&lsaquo;/type&rsaquo;
+                        &lsaquo;alias&rsaquo;website&lsaquo;/alias&rsaquo;
+                        &lsaquo;key&rsaquo;id&lsaquo;/key&rsaquo;
+                        &lsaquo;read_only&rsaquo;date_added&lsaquo;/read_only&rsaquo;
+                        &lsaquo;required&rsaquo;url&lsaquo;/required&rsaquo;
+                        &lsaquo;/datasource&rsaquo;";
+. . .
+                    </pre>
+                </li>
+            </ol>
+        </div>
+    </body>
+</html>
