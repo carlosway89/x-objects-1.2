@@ -82,8 +82,13 @@ $controller_name = null;
               case 'files': return new FILES; break;
               case 'container': return $container; break;
  	 		case 'req': return new REQUEST; break;
- 	 	case 'uri': return new REQUEST_URI; break; 
- 	 	default: return parent::__get( $what ); break;
+ 	 	case 'uri': return new REQUEST_URI; break;
+            /**
+             * By default we get the page var with the same name
+             */
+        default:
+            return $this->page_vars[$what];
+        break;
  	 		
  	 	}
  	 }
@@ -113,6 +118,15 @@ $controller_name = null;
      // public access to page vars
      public function page_vars(){
          return $this->page_vars;
+     }
+
+     /**
+      * Set a Page Var to a specific value (a convenience method)
+      * @param $page_var string the var to set
+      * @param $value mixed the value
+      */
+     public function __set($page_var,$value){
+        $this->page_vars[$page_var] = $value;
      }
  }
 ?>

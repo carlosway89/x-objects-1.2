@@ -62,7 +62,19 @@ class xo_model extends magic_object {
         return $result;
     }
 
-    public function find_all_values_as_array($member,$search="all"){
+    /**
+     * Find all instances of a specific column (field) for given Model
+     * and return them as an array
+     * @param string $member the member name to fetch for each row
+     * @param string $search an optional limiter for search
+     * @param bool $compact_array optional to compact the array after fetching
+     * @return array the results
+     */
+    public function find_all_values_as_array(
+        $member,
+        $search="all",
+        $compact_array = false
+    ){
         global $container;
         $class = $this->key;
         $query = "SELECT `$member` FROM `".$class::source()->name."` ".SQLCreator::getWHEREclause(HumanLanguageQuery::create($search)->conditions());
@@ -77,6 +89,8 @@ class xo_model extends magic_object {
             }
             $result->close();
         }
+        if ( $compact_array)
+            array_walk($values,function(&$item,$index){ $item = $item[0]; });
         return $values;
     }
 
