@@ -44,7 +44,7 @@ class xo_video_file_converter {
                         -me_method hex -subq 7 -trellis 1 -refs 5 -bf 0 -coder 0
                         -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor
                         0.71 -qmin 10 -qmax 51 -qdiff 4 -strict -2 -level 30 -vprofile
-                        baseline $this->new_filename';
+                        baseline '. $this->new_filename;
                     $command = new xo_shell_command($cmd);
                     if ( ! $command->execute())
                         $this->error = 'Could not run server video converter';
