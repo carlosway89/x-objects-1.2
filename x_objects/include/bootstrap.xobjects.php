@@ -13,6 +13,10 @@ class xo_bootstrapper {
     private $php_self = '';
     // connection xml
     private $conn_xml = null;
+    // x-objects classes directories
+    private $xclass_dirs = array('apis','behaviors','businessobjects','core','data','graphics','html',
+        'lightweight','media','messaging','objects','search','services','sql','twitter',
+        'vendors','webobjects','xml');
     public function __construct(){
         global $autoload_bypass_exception,$xobjects_location,$webapp_location;
         $this->bypass_exception = $autoload_bypass_exception;
@@ -48,25 +52,10 @@ class xo_bootstrapper {
         if (! $this->xloc ){
         }
         $pathroot = $this->xloc;
-        $paths = $pathroot . "/classes" .					// platform classes
-            $separator . $pathroot . "/classes/apis" . 			// messaging service
-            $separator . $pathroot . "/classes/behaviors" .					// data
-            $separator . $pathroot . "/classes/data" .					// data
-            $separator . $pathroot . "/classes/core" .					// core app services
-            $separator . $pathroot . "/classes/sql" .					// core app services
-            $separator . $pathroot . "/classes/services" .				// service classes
-            $separator . $pathroot . "/classes/graphics" .				// service classes
-            $separator . $pathroot . "/classes/webobjects" .				// web objects
-            $separator . $pathroot . "/classes/objects" .				// web objects
-            $separator . $pathroot . "/classes/tools" .				// web objects
-            $separator . $pathroot . "/classes/vendors" .				// vendors (third party)
-            $separator . $pathroot . "/classes/businessobjects" . // business objects
-            $separator . $pathroot . "/classes/xml" . 			// xml
-            $separator . $pathroot . "/classes/messaging" . 			// messaging service
-            $separator . $pathroot . "/classes/management" . 			// messaging service
-            $separator . $pathroot . "/classes/vendors/stripe/lib" . 			// messaging service
-            $separator . $pathroot . "/classes/vendors/stripe/lib/Stripe" . 			// messaging service
-            $separator . $pathroot . "classes".
+        $paths = $pathroot . "/classes";
+        foreach ($this->xclass_dirs as $dir)
+            $paths .= $separator.$pathroot."/classes/$dir";
+        $paths .= $separator . $pathroot . "classes".
             $separator . "$this->wloc/app/models" .
             $separator . "$this->wloc/app/classes"
         ;

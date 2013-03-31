@@ -30,6 +30,15 @@ class xo_json_object {
     }
 
     /**
+     * get a JSON member
+     * @param $member string the JSON member, that is the array key
+     * @return $value mixed|null the value of the member, or null if not set
+     */
+    public function __get($member){
+        return isset($this->json_result[$member])?$this->json_result[$member]:null;
+    }
+
+    /**
      * Queue up a model/business object to save
      * @param $model object business object
      */

@@ -23,6 +23,7 @@ class x_objects {
 	//! private constructor -- singleton
     // is ajax running?
     public $is_ajax = false;
+    private $platform = null;
 	private function __construct() { 
 		global $webapp_location;
 		// set up logging and debugging
@@ -85,7 +86,8 @@ class x_objects {
 			xevent::$log_type = xevent::log_file;
 		}
         if ( $this->debug) echo "$tag->event_format: done constructing container<br>";
-	}
+        $this->platform = preg_match( '/;/' , ini_get( "include_path" ) ) ? "win" : "ux";
+    }
 	
 	public function destroy(){
 		$t = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
@@ -549,6 +551,10 @@ class x_objects {
     public function performance($stat,$value){
         if ( $this->performance_tracking)
             $this->performance->performance($stat,$value);
+    }
+
+    public function platform(){
+        return $this->platform;
     }
 }
 

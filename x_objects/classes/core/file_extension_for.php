@@ -9,6 +9,8 @@ class file_extension_for {
     public function __construct($filename){
         if ( preg_match( '/(.+)\.([a-z|A-Z|0-9|_]+)/',$filename,$hits)){
             $this->extension = $hits[2];
+        } else {
+            $this->extension = 'unknown';
         }
     }
     public function __toString(){
