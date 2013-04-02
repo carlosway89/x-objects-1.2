@@ -6,7 +6,7 @@
  * conditions.  It is recommended that any production components that are critical for
  * the site function implement this interface.
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 13/02/13
  * Time: 10:19 AM
  */

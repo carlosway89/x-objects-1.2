@@ -3,7 +3,7 @@
  *
  * Component to get a generic "file type" name for a given filename
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 12/02/13
  * Time: 05:05 PM
  */

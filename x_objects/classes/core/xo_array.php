@@ -1,7 +1,7 @@
 <?php
 /**
  * An xo_array is a convenience class that creates a printable object version of an array
- * User: "David Owen Greenberg <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg <code@x-objects.org>
  * Date: 04/10/12
  * Time: 03:27 PM
  */

@@ -3,7 +3,7 @@
  *
  * library of core/low-level functions
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 27/02/13
  * Time: 10:04 AM
  */

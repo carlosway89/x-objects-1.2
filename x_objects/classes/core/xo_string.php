@@ -1,7 +1,7 @@
 <?php
 /**
  * An xo_string is a convenience class that creates a printable object version of a standard object
- * User: "David Owen Greenberg <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg <code@x-objects.org>
  * Date: 11/10/12
  * Time: 03:27 PM
  */

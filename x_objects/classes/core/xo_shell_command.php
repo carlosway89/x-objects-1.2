@@ -13,7 +13,6 @@ class xo_shell_command {
     public $output = null;
     public function __construct($command){
         $this->command = $command;
-        echo $command."<br>";
     }
     public function execute(){
         $output = shell_exec($this->command);

@@ -4,7 +4,7 @@
  * An object representation of an image from a source file, allowing
  * for inspection of validity and certain other properties
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 11/03/13
  * Time: 06:06 PM
  */

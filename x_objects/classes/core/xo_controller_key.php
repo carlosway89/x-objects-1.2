@@ -3,7 +3,7 @@
  *
  * Web component to suss out the controller name at page load time
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 14/02/13
  * Time: 01:00 PM
  */

@@ -4,7 +4,7 @@
  * API Web Component for managing functional connections to Stripe Payments.
  * Required to be Unit-testable for production-readiness.
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 14/02/13
  * Time: 11:38 AM
  */

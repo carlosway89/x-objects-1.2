@@ -4,7 +4,7 @@
  * An Object representing a bundle of actions, the result of which is captured in
  * an Array.  This is mainly for the purpose of echoing back as JSON to the client
  *
- * User: "David Owen Greenberg" <owen.david.us@gmail.com>
+ * User: "David Owen Greenberg" <code@x-objects.org>
  * Date: 01/02/13
  * Time: 04:24 PM
  */
