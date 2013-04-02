@@ -9,10 +9,14 @@
  */
 
 class xo_shell_command {
+
     private $command = '';
     public $output = null;
     public function __construct($command){
+        global $container;
+        $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         $this->command = $command;
+        if ($container->debug) echo "$tag->event_format: command is $command<br>";
     }
     public function execute(){
         $output = shell_exec($this->command);
