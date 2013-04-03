@@ -556,6 +556,25 @@ class x_objects {
     public function platform(){
         return $this->platform;
     }
+
+    /**
+     * css style for showing a banner with the label of the environment
+     */
+    public function environment_banner_style(){
+        $style = 'display:none;';
+        $settings = $this->config->xml()->site->environment;
+        if ($settings)
+            $style = $settings->display == 'yes'?'display:block':'display:none';
+        return $style;
+    }
+
+    public function environment_label(){
+        $label = 'Environment: Unknown';
+        $settings = $this->config->xml()->site->environment;
+        if ($settings)
+            $label = $settings->label?'Environment: '.(string)$settings->label : 'Environment: unknown';
+        return $label;
+    }
 }
 
 ?>
