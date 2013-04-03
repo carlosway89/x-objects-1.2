@@ -951,13 +951,13 @@ abstract class business_object extends data_object
         $u = new $c;
         $r = new REQUEST;
         foreach ( $r->as_array as $n=>$v){
-            if ( $container->app_debug ) echo "$tag->event_format: $n = $v<br>\r\n";
+            //if ( $container->app_debug ) echo "$tag->event_format: $n = $v<br>\r\n";
             $u->$n = $v;
         }
         // now optional members
         if ( $a && is_array($a)){
             foreach ($a as $n=>$v){
-                if ( $container->app_debug ) echo "$tag->event_format: $n = $v<br>\r\n";
+                //if ( $container->app_debug ) echo "$tag->event_format: $n = $v<br>\r\n";
                 $u->$n = $v;
 
             }
