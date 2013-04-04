@@ -106,7 +106,7 @@ abstract class data_object extends AttributedObject
 					// go through all columns
 					foreach ($this->source->columns() as $value) {
 					
-						if ( $container->debug ) echo "$tag->event_format : checking column $value<br>\r\n";
+						if ( $container->debug && $container->debug_level >= 2) echo "$tag->event_format : checking column $value<br>\r\n";
 						if ( ! $this->source()->is_read_only( $value)
 							&&
 							$this->isDirty( $value )
@@ -116,7 +116,7 @@ abstract class data_object extends AttributedObject
 							$query .= ($flag++ ? ', ' : ' ' ) . $this->source->write_col_for( $value ) . '=\'' . MySQLService2::real_escape_string($this->get( $value )) . '\' ';
 							$fields = true;
 						} else {
-							if ( $container->debug ) echo "$tag->event_format : column $value will not be included in SQL, either because it is read only, is not dirty, or is an ID<br>\r\n";
+							if ( $container->debug && $container->debug_level >=3) echo "$tag->event_format : column $value will not be included in SQL, either because it is read only, is not dirty, or is an ID<br>\r\n";
 						}
 					}
 			
