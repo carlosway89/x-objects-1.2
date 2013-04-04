@@ -31,5 +31,8 @@ class xo_displayable_object {
         }
         return $str;
     }
-
+    // provide better errors to parent
+    public function __get($what){
+        trigger_error("$what: not a member of class ".get_called_class(),E_USER_WARNING);
+    }
 }

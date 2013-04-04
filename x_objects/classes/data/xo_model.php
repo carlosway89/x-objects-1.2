@@ -105,5 +105,11 @@ class xo_model extends magic_object {
         return $source->import_columns();
     }
 
+    // get the key field for a given model
+    public function key_field(){
+        $object = new $this->key();
+        return $object->source()->keycol();
+    }
+
 }
 ?>
