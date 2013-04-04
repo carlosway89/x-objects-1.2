@@ -39,9 +39,8 @@ class xo_docx_file_converter {
                     $this->error = 'There is no X-Objects configuration for libreoffice';
                 else {
                     global $webapp_location;
-                    $full_path = $webapp_location."/user_images/$this->filename";
                     $cmd = (string) $config->binary . " --headless --invisible
-                    --convert-to pdf $full_path --outdir ".$webapp_location."/user_images/
+                    --convert-to pdf $this->filename --outdir ".$webapp_location."/user_images/
                     --nofirststartwizard -display 1 ";
                     if ( $container->debug) echo "$tag->event_format: cmd=$cmd<br>";
                     $command = new xo_command($cmd);
