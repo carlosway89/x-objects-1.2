@@ -43,7 +43,7 @@ class xo_docx_file_converter {
                     --convert-to pdf $this->filename --outdir ".$webapp_location."/user_images/
                     --nofirststartwizard -display 1 ";
                     if ( $container->debug) echo "$tag->event_format: cmd=$cmd<br>";
-                    $command = new xo_shell_command($cmd);
+                    $command = new xo_command($cmd);
                     if ( ! $command->execute())
                         $this->error = $command->output;
                     else {
