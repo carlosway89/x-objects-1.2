@@ -74,7 +74,7 @@ class MySQLService2 implements x_service  {
 		// set up logging
 		global $container;
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
-		if ( $container->debug )
+		if ( $container->debug && $container->debug_level >= 2)
 			echo "<span style='color:orange;'>$tag->event_format : Looking for Id of record, and search = $search</span><br>\r\n";
 	
 		$query = "SELECT `$key` FROM `$source` " . SQLCreator::getWHEREclause( HumanLanguageQuery::create( $search )->conditions() , get_class()."::".__FUNCTION__ );
@@ -356,43 +356,6 @@ class MySQLService2 implements x_service  {
 	
 	
 	/*
-	 * getFieldType(): this de-abstraction function parses out a field's type
-	 * and uses some built in assumptions
-	 */
-	public static function getFieldType( $Field ) {
-	
-		/*
-		 * This exception looks for bitmask fields based on the presence of the word
-		 * Bitmask in the field name
-		 */
-		if ( strpos( $Field->name , 'Bitmask' ))
-			return 'Bitmask';
-			
-		/*
-		 * This exception looks for ImageURL in the field, which indicates that this is an uploadable image
-		 */
-		if ( strpos ( $Field->name, 'ImageURL'))
-			return 'UploadableFile';
-			
-		/*
-		 * This exception looks for URL fields based on the token URL in the field
-		 */
-		if ( strpos ( $Field->name, 'URL'))
-			return 'URL';
-			
-		/*
-		 * Exception for passwords
-		 */
-		if ( $Field->name == 'Password')
-			return 'Password';
-			
-		/*
-		 * In the general case, we just need to send back the translation of type by Id
-		 */
-		return ( isset( $this->MySQLFieldType[ $Field->type ] ) ?  $this->MySQLFieldType[ $Field->type ] : $Field->type);	
-	}
-	
-	/*
 	 * deabstractDataValue(): a really useful function to display the de-abstracted value  of a specific
 	 * field.  In most cases, it does nothing, but for certain field types can be very useful! 
 	 * 
@@ -498,19 +461,6 @@ class MySQLService2 implements x_service  {
 		return $ReturnObjects;
 		
 	}
-		/*
-	 * getFieldByName ( $Name ) : return an array def of a field given it's name
-	 */
-	public static function getFieldByName( $Name ) {
-
-		// make sure fields are loaded
-		foreach ($this->Fields as $Field)
-			if ( $Field->name == $Name)
-				return $Field;
-		
-		return null;
-	}
-	
 	/*
 	 * simpleLookup( $Source, $Lookup, $Target): performs a simple lookup, translating from the 
 	 * lookup field to its corresponding target

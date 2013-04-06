@@ -19,7 +19,7 @@ class DatabasePool {
 		global $container;
         $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 		$this->xml = $container->config->database;
-        if ( $container->debug ) echo "$tag->event_format: xml config is ".$this->xml->asXML(). "<br>";
+        if ( $container->debug && $container->debug_level >=2 ) echo "$tag->event_format: xml config is ".$this->xml->asXML(). "<br>";
 	}
 	
 	/*

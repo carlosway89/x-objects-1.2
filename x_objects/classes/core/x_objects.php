@@ -34,7 +34,7 @@ class x_objects {
 		} catch ( Exception $e ) {
 			throw new ObjectNotInitializedException( 'X-Objects is unable to find its configuration file <strong>x-objects.xml</strong>.  Please ensure the file is in /xml or /x_objects/xml and try again');
 		}
-        if ( $this->debug){
+        if ( $this->debug && $this->debug_level >= 2){
             echo "$tag->event_format: xobjects configuration is ". $this->config->xml()->asXML() . "<br>";
         }
 
@@ -55,14 +55,6 @@ class x_objects {
 		if ( (bool) $this->config->xml()->css_compatibility )
 			RealXML::$css_compatible = $this->browser();
 		
-			/* initialize services
-        if ( $this->debug) echo "$tag->event_format: about to get login service<br>";
-
-        $this->service = array (
-			'login' => LoginService::instance()
-		);
-        if ( $this->debug) echo "$tag->event_format: done getting login service<br>";
-		*/
 			// set debugging
         $token = trim((string)$this->config->xml()->debugger->status);
         if ( preg_match( '/enabled/',$token) ) {
@@ -85,7 +77,7 @@ class x_objects {
 		if ( trim( (string) $this->config->xml()->log_type ) == 'file' ) {
 			xevent::$log_type = xevent::log_file;
 		}
-        if ( $this->debug) echo "$tag->event_format: done constructing container<br>";
+        if ( $this->debug && $this->debug_level >= 2) echo "$tag->event_format: done constructing container<br>";
         $this->platform = preg_match( '/;/' , ini_get( "include_path" ) ) ? "win" : "ux";
     }
 	
