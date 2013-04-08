@@ -159,6 +159,15 @@ class x_object {
 		$obj = new x_object(null,null,$xml);
 		return $obj;
 	}
+
+    public function __toString(){
+        try {
+            $str = $this->html();
+        } catch (Exception $e){
+            $str = $e->getMessage();
+        }
+        return $str;
+    }
 	
 }
 
