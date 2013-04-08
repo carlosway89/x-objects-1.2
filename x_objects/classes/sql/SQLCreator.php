@@ -37,7 +37,10 @@ final class SQLCreator{
 				echo "$tag->event_format: there are no conditions so just returning WHERE 1<br>\r\n";
 			return ' WHERE 	1 ';
 		}
-			
+
+         // save original for any last-minute processing
+        $original_conditions = $Conditions;
+
 		$Conditions = explode( ',' ,$Conditions);
 		
 		$Clause = ' WHERE (';
@@ -164,6 +167,11 @@ final class SQLCreator{
          if ( preg_match('/(.+)\s+AND\s+(.+)\s+(.+)\s+(.+)\s+OR\s+(.+)\s+(.+)\s+(.+)/',$Clause,$hits)){
              $Clause = "$hits[1] AND ( $hits[2] $hits[3] $hits[4] OR $hits[5] $hits[6] $hits[7] )";
          }
+
+         // if we had an offset include it
+         if ( preg_match('/offset ([0-9]+)/',$original_conditions,$hits))
+             $Clause .= " LIMIT 10000 OFFSET $hits[1]";
+
 	    if ( $container->debug && $container->debug_level >1
         ) echo "$tag->event_format: returned clause is $Clause<br>\r\n";
 		return "$Clause";
