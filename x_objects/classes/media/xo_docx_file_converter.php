@@ -16,12 +16,14 @@ class xo_docx_file_converter {
     private $extension = '';
     public $error = '';
     public $output = '';
-    public function __construct($filename){
+    private $save_dir = '';
+    public function __construct($filename,$save_dir){
         global $container;
         $this->container = (object)$container;
         $this->filename = $this->new_filename = $filename;
         $this->type = (string) new file_type_for($filename);
         $this->extension = (string) new file_extension_for($filename);
+        $this->save_dir = $save_dir;
     }
     public function convert(){
         global $container;
@@ -39,7 +41,7 @@ class xo_docx_file_converter {
                     $this->error = 'There is no X-Objects configuration for libreoffice';
                 else {
                     global $webapp_location;
-                    $cmd = "sudo -i ". (string) $config->binary . " --headless --invisible --convert-to pdf $this->filename --outdir ".$webapp_location."/user_images/ --nofirststartwizard -display 1 2>&1";
+                    $cmd = "sudo -i ". (string) $config->binary . " --headless --invisible --convert-to pdf $this->filename --outdir $this->save_dir --nofirststartwizard -display 1 2>&1";
                     if ( $container->debug) echo "$tag->event_format: cmd=$cmd<br>";
                     $command = new xo_shell_command($cmd);
                     if ( ! $command->execute())
