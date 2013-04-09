@@ -34,8 +34,8 @@ class xo_docx_file_converter {
         if ( $this->type != 'document')
             $this->error = "$this->filename: Not a document";
         else {
-            // convert from DOCX
-            if ( in_array( $this->extension,array('doc','docx','xls','xlsx'))){
+            // convert from MS Office
+            if ( in_array( $this->extension,array('doc','docx','xls','xlsx','ppt','pptx'))){
                 $this->new_filename = preg_replace("/\.$this->extension/",'.pdf',$this->filename);
                 $config = $this->container->config->libreoffice;
                 if ( ! $config )
