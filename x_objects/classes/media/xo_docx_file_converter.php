@@ -17,6 +17,7 @@ class xo_docx_file_converter {
     public $error = '';
     public $output = '';
     private $save_dir = '';
+    public $command = '';
     public function __construct($filename,$save_dir){
         global $container;
         $this->container = (object)$container;
@@ -42,6 +43,7 @@ class xo_docx_file_converter {
                 else {
                     global $webapp_location;
                     $cmd = "sudo -i ". (string) $config->binary . " --headless --invisible --convert-to pdf $this->filename --outdir $this->save_dir --nofirststartwizard -display 1 2>&1";
+                    $this->command = $cmd;
                     if ( $container->debug) echo "$tag->event_format: cmd=$cmd<br>";
                     $command = new xo_shell_command($cmd);
                     if ( ! $command->execute())
