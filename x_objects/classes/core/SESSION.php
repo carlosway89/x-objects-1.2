@@ -29,7 +29,15 @@ class SESSION {
 	public function members(){ return $_SESSION;}
 	//! create one
 	public static function create(){ return new SESSION(); }
-	
+
+    public function __toString(){
+        try {
+            $str = (string) new xo_array($_SESSION);
+        } catch (Exception $e){
+            $str = $e->getMessage();
+        }
+        return $str;
+    }
 }
 
 ?>
