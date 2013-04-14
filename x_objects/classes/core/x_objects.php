@@ -24,6 +24,7 @@ class x_objects {
     // is ajax running?
     public $is_ajax = false;
     private $platform = null;
+    private $debug_manager = null;      // manages debugging
 	private function __construct() { 
 		global $webapp_location;
 		// set up logging and debugging
@@ -34,6 +35,9 @@ class x_objects {
 		} catch ( Exception $e ) {
 			throw new ObjectNotInitializedException( 'X-Objects is unable to find its configuration file <strong>x-objects.xml</strong>.  Please ensure the file is in /xml or /x_objects/xml and try again');
 		}
+        // set up debug manager
+        $this->debug_manager = new xo_debug_manager( (object)$this->config->xml()->debugger);
+
         if ( $this->debug && $this->debug_level >= 2){
             echo "$tag->event_format: xobjects configuration is ". $this->config->xml()->asXML() . "<br>";
         }
@@ -55,28 +59,6 @@ class x_objects {
 		if ( (bool) $this->config->xml()->css_compatibility )
 			RealXML::$css_compatible = $this->browser();
 		
-			// set debugging
-        $token = trim((string)$this->config->xml()->debugger->status);
-        if ( preg_match( '/enabled/',$token) ) {
-			Debugger::enable();
-			$df = (string) $this->config->xml()->debugger->file;
-			$mode = (string)$this->config->xml()->debugger->overwrite == 'yes'?"w":"a";
-			if ( $df )
-				$this->debug_file = fopen($webapp_location.$df,$mode);
-			if ( $this->debug_file){
-				fputs( $this->debug_file, "\r\n============\r\n$tag->event_format: debugging is enabled level $this->debug_level\r\n");
-				fflush( $this->debug_file);
-			}
-
-            echo "$tag->event_format: debugging is enabled level $this->debug_level <br>\r\n";
-            echo "$tag->event_format: TZ = ".@date_default_timezone_get()." <br>\r\n";
-
- 		}
-		
-		// set logging type
-		if ( trim( (string) $this->config->xml()->log_type ) == 'file' ) {
-			xevent::$log_type = xevent::log_file;
-		}
         if ( $this->debug && $this->debug_level >= 2) echo "$tag->event_format: done constructing container<br>";
         $this->platform = preg_match( '/;/' , ini_get( "include_path" ) ) ? "win" : "ux";
     }
@@ -128,8 +110,13 @@ class x_objects {
 		
 		
     }
-	
-	public function __get ( $what ) {
+
+    /**
+     * Get a magic member
+     * @param $what string the name of the member
+     * @return mixed the member value
+     */
+    public function __get ( $what ) {
 		$tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 	    $s = new SESSION();
 		switch ( $what ) {
@@ -158,7 +145,7 @@ class x_objects {
                 return php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR']);
             break;
                 case 'performance_tracking':
-                return preg_match('/performance/',(string)$this->xml->debugger->status )?true:false;
+                    return $this->debug_manager->_is(xo_debug_manager::performance);
             break;
             case 'lang':
                 $lang = (string)$this->config->xml()->site->xobjects_language;
@@ -196,10 +183,10 @@ class x_objects {
 				return api_manager::instance();
 			break;
 			case 'app_debug':
-                return preg_match('/app/',(string)$this->xml->debugger->status )?true:false;
+                return $this->debug_manager->_is(xo_debug_manager::app_debug);
                 break;
 			case 'debug':
-				return preg_match('/enabled/',trim( (string) $this->config->xml()->debugger->status ))  ? true:false;
+                return $this->debug_manager->_is(xo_debug_manager::debug);
 			break;
 			// get managed services
 			case 'managed_services':
