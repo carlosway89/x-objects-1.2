@@ -11,11 +11,15 @@ class xo_string extends magic_object{
     }
     public function __toString(){
         $s = "Object(";
-        foreach( $this->o as $n=>$v){
-            $value = is_object($v)?new xo_string($v):$v;
-            $s .= "$n = '$value', ";
+        if ( ! is_array($this->o))
+            $s .= 'Invalid Object or no members)';
+        else{
+            foreach( $this->o as $n=>$v){
+                $value = is_object($v)?new xo_string($v):$v;
+                $s .= "$n = '$value', ";
+            }
+            $s .= ")";
         }
-        $s .= ")";
         return $s;
     }
 }
