@@ -18,7 +18,7 @@ class file_type_for {
     );
     public function __construct($filename){
         if ( preg_match( '/(.+)\.([a-z|A-Z|0-9|_]+)/',$filename,$hits)){
-            $this->extension = $hits[2];
+            $this->extension = strtolower($hits[2]);
             if ( $this->extension){
                 foreach( $this->translations as $type =>$extensions){
                     if ( in_array($this->extension,$extensions)){
