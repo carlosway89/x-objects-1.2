@@ -554,6 +554,14 @@ class x_objects {
             $label = $settings->label?'Environment: '.(string)$settings->label : 'Environment: unknown';
         return $label;
     }
+
+    /**
+     * Get the debug status as a numeric value
+     * @return int the status
+     */
+    public function debug_status(){
+        return $this->debug_manager->status();
+    }
 }
 
 ?>

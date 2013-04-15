@@ -36,4 +36,7 @@ class xo_debug_manager {
             return (string)$row['value'];
         } else return '';
     }
+    public function status(){
+        return $this->state;
+    }
 }

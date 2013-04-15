@@ -18,6 +18,23 @@
  * Time: 04:58 PM
  */
 class xobj_controller extends xo_controller {
+    public function set_debug(){
+        global $webapp_location;
+        $xml_file = $webapp_location."/app/xml/x-objects.xml";
+        $xml = simplexml_load_file($xml_file); //This line will load the XML file.
+
+        $sxe = new SimpleXMLElement($xml->asXML()); //In this line it create a SimpleXMLElement object with the source of the XML file.
+        $token = '';
+        switch($this->uri->part(3)){
+            case '0': $token ='disabled'; break;
+            case '1': $token = 'enabled'; break;
+            case '2': $token = 'app'; break;
+        }
+        $sxe->debugger->status = $token;
+        //This next line will overwrite the original XML file with new data added
+        $sxe->asXML($xml_file);
+        echo json_encode(array('result'=>'success'));
+    }
     public function recordset(){
         $j = json_decode($this->req->json);
         echo RecordSet::create($j->key,$j->query,$j->view,$j->none_view)->xhtml($j->wrapper);
