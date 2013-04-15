@@ -17,6 +17,7 @@ class xo_video_file_converter {
     public $error = '';
     public $output = '';
     private $extensions = array('avi','wmv','mov');
+    public $command = '';
     public function __construct($filename){
         global $container;
         $this->container = (object)$container;
@@ -46,6 +47,7 @@ class xo_video_file_converter {
                         -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor
                         0.71 -qmin 10 -qmax 51 -qdiff 4 -strict -2 -level 30 -vprofile
                         baseline '. $this->new_filename . ' 2>&1 ';
+                    $this->command = $cmd;
                     $command = new xo_shell_command($cmd);
                     if ( ! $command->execute())
                         $this->error = 'Could not run server video converter';
