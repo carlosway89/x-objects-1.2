@@ -16,6 +16,7 @@ class xo_video_file_converter {
     private $extension = '';
     public $error = '';
     public $output = '';
+    private $extensions = array('avi','wmv','mov');
     public function __construct($filename){
         global $container;
         $this->container = (object)$container;
@@ -29,8 +30,8 @@ class xo_video_file_converter {
             $this->error = "$this->filename: Not a video file";
         else {
             // convert from AVI
-            if ( $this->extension == 'avi'){
-                $this->new_filename = preg_replace('/\.avi/','.mp4',$this->filename);
+            if ( in_array($this->extension,$this->extensions)){
+                $this->new_filename = preg_replace("/\.$this->extension/",'.mp4',$this->filename);
                 $config = $this->container->config->ffmpeg;
                 if ( ! $config )
                     $this->error = 'There is no X-Objects configuration for ffmpeg';
