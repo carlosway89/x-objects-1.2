@@ -539,14 +539,14 @@ abstract class business_object extends data_object
 
 			$result = parent::save();
 		
-		
-		// fire after triggers
-		// don't fire for xevent
-		if ( $result && ! preg_match('/xevent/' ,$this->key)){
-			//$this->after_triggers(  $what, __FUNCTION__."()" );
-		
-		}
         self::$last_class_error = $this->save_error;
+        // after triggers
+        if ( $result ){
+            $trigger_name = "trigger_after_$this->save_type";
+            if ( method_exists($this,$trigger_name))
+                $this->$trigger_name();
+        }
+
 		return $result;
 		
 	}

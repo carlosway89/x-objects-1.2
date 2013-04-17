@@ -40,6 +40,8 @@ abstract class data_object extends AttributedObject
 	//! iterator position
 	private static $itPosition = 0,$itKeys;
 
+    protected $save_type = '';
+
 	//! construct a new object, where the child class specifies the datasource, etc.
 	public function __construct( $search = null , $datasource) {
         // load any resources
@@ -397,15 +399,14 @@ abstract class data_object extends AttributedObject
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 		
 	
-		if ( $this->isLoaded )
-			return $this->commit('update', $mode);
+		if ( $this->isLoaded ){
+            $this->save_type = 'update';
+            return $this->commit('update', $mode);
+        }
 		else {
-			if ( Debugger::enabled() )
-				echo "$tag->event_format : Need to insert new record!<br>\r\n";
-				
-			//$this->isLoaded = true;
+	        if ($container->debug ) echo "$tag->event_format : Need to insert new record!<br>\r\n";
+            $this->save_type = 'insert';
 			return $this->commit('insert');
-			
 		}
 	}
 	
