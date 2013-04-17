@@ -140,6 +140,7 @@ class xobj_controller extends xo_controller {
     }
     //business
     public function b(){
+        global $container;
         $c = $this->uri->part(3);
         $id = $this->uri->part(4);
 
@@ -203,7 +204,7 @@ class xobj_controller extends xo_controller {
             }
 
         }
-        header("Content-Type: application/json");
+        if ( ! $container->debug ) header("Content-Type: application/json");
         echo json_encode($result);
         return true;
     }
