@@ -166,11 +166,12 @@
 			$query .= " GROUP BY $matches[1] ";
 			
 		// check for embedded group by
+        /*
 		if ( preg_match( '/ORDER BY ([a-zA-Z0-9_]+){1} ([A-Z]+)/' , $conditions , $matches) )
 			$query .= " ORDER BY $matches[1] $matches[2]";
 		if ( preg_match( '/ORDER BY `([a-zA-Z0-9_]+){1}` ([A-Z]+)/' , $conditions , $matches) )
 			$query .= " ORDER BY `$matches[1]` $matches[2]";
-			
+		*/
 			
 		// add limit if any
 		if ( $limit ) {
@@ -185,7 +186,12 @@
 				$vcache_limit_check = $matches[1];
 		}
 
-		// check for embedded offset
+        // if we had an offset include it
+       //if ( preg_match('/offset ([0-9]+)/',$conditions,$hits))
+         // $query .= " LIMIT 10000 OFFSET $hits[1]";
+
+
+        // check for embedded offset
 		if ( preg_match( '/OFFSET ([0-9]+){1}/' , $conditions , $matches) )
 			$query .= " OFFSET $matches[1] ";
 			

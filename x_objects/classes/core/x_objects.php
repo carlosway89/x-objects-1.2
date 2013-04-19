@@ -59,7 +59,7 @@ class x_objects {
 		if ( (bool) $this->config->xml()->css_compatibility )
 			RealXML::$css_compatible = $this->browser();
 		
-        if ( $this->debug && $this->debug_level >= 2) echo "$tag->event_format: done constructing container<br>";
+        if ( $this->debug && $this->debug_level >= 5) echo "$tag->event_format: done constructing container<br>";
         $this->platform = preg_match( '/;/' , ini_get( "include_path" ) ) ? "win" : "ux";
     }
 	

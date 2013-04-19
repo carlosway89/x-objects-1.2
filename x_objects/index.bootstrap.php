@@ -22,7 +22,7 @@ $container = null;
 try { $container = x_objects::instance(); } catch ( Exception $e ) {
 	echo '<span style="color:red;">X-Objects bootup failed: '.$e->getMessage().'</span>';
 } 
-if ( $container->debug ) echo "$tag->event_format: container SINGLETON created<br>\r\n";
+if ( $container->debug && $container->debug_level >= 5) echo "$tag->event_format: container SINGLETON created<br>\r\n";
 
 // set debugging
 $debug = Debugger::enabled();	

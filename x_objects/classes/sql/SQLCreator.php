@@ -51,6 +51,7 @@ final class SQLCreator{
 		$last_was_or = false;
 		
 		foreach ( $Conditions as $Condition) {
+            if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: evaluating Condition $Condition<br>\r\n";
 			$matched = false;
 		
 			// set default splitter
@@ -74,16 +75,21 @@ final class SQLCreator{
 				continue;
 
 			// group by 
-			if ( preg_match( '/ORDER BY/', strtoupper( $Condition ) ) )
-				continue;
-				
+			if ( preg_match( '/ORDER BY/', strtoupper( $Condition ) ) ){
+                if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: order by condition must be handled at end of loop!<br>\r\n";
+                continue;
+            }
+
 			// special case!
 			if ( preg_match ( '/LIMIT/' , strtoupper( $Condition ) ) )
 				continue;
 				
 			// special case!
-			if ( preg_match ( '/OFFSET/' , strtoupper( $Condition ) ) )
-				continue;
+			if ( preg_match ( '/OFFSET/' , strtoupper( $Condition ) ) ){
+                if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: offset condition must be handled at end of loop!<br>\r\n";
+                continue;
+
+            }
 
 			if ( preg_match( '/\s+RLIKE\s+/' , $Condition  ) )
 				$splitter = 'RLIKE';
@@ -165,12 +171,18 @@ final class SQLCreator{
 
         // last thing, if an or comes after an and, we need more parentheses
          if ( preg_match('/(.+)\s+AND\s+(.+)\s+(.+)\s+(.+)\s+OR\s+(.+)\s+(.+)\s+(.+)/',$Clause,$hits)){
-             $Clause = "$hits[1] AND ( $hits[2] $hits[3] $hits[4] OR $hits[5] $hits[6] $hits[7] )";
+            $Clause = "$hits[1] AND ( $hits[2] $hits[3] $hits[4] OR $hits[5] $hits[6] $hits[7] )";
+         }
+
+        if ( preg_match( '/order by ([a-z|_]+) (asc|desc)/', strtolower( $original_conditions ),$hits ) ){
+           if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: order by condition may now be handled<br>\r\n";
+             $Clause .= " ORDER BY $hits[1] $hits[2]";
          }
 
          // if we had an offset include it
+
          if ( preg_match('/offset ([0-9]+)/',$original_conditions,$hits))
-             $Clause .= " LIMIT 10000 OFFSET $hits[1]";
+                $Clause .= " LIMIT 10000 OFFSET $hits[1]";
 
 	    if ( $container->debug && $container->debug_level >1
         ) echo "$tag->event_format: returned clause is $Clause<br>\r\n";

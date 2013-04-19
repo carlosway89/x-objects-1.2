@@ -21,8 +21,9 @@ class xo_debug_manager {
         if ( preg_match('/database\:([a-z|_]+)\.([a-z|_]+)/',$token,$hits))
             $token = $this->state_from_database($hits[1],$hits[2]);
         $this->state = $this->state | (preg_match('/app/', $token)?self::app_debug:0);
-        $this->state = $this->state | (preg_match('/enabled/',$token)?self::app_debug:0);
-        $this->state = $this->state | (preg_match('/performance/',$token )?self::app_debug:0);
+        $this->state = $this->state | (preg_match('/enabled/',$token)?self::debug:0);
+        $this->state = $this->state | (preg_match('/performance/',$token )?self::performance:0);
+        //echo "state is $this->state<br>";
     }
     public function _is($state){
         return $this->state & $state;
