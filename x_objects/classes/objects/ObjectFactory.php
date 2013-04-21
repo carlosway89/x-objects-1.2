@@ -125,7 +125,8 @@
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 		// convert as HLQ
 		$conditions = HumanLanguageQuery::create($conditions)->conditions();
-		
+
+        //echo "$tag->event_format: sortBy=$sortBy<br>\r\n";
 		if ( Debugger::enabled() )
 			self::$Debug = true;
 			

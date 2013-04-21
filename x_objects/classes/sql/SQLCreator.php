@@ -75,7 +75,7 @@ final class SQLCreator{
 				continue;
 
 			// group by 
-			if ( preg_match( '/ORDER BY/', strtoupper( $Condition ) ) ){
+			if ( preg_match( '/(SORT|ORDER) BY/', strtoupper( $Condition ) ) ){
                 if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: order by condition must be handled at end of loop!<br>\r\n";
                 continue;
             }
@@ -174,7 +174,7 @@ final class SQLCreator{
             $Clause = "$hits[1] AND ( $hits[2] $hits[3] $hits[4] OR $hits[5] $hits[6] $hits[7] )";
          }
 
-        if ( preg_match( '/order by ([a-z|_]+) (asc|desc)/', strtolower( $original_conditions ),$hits ) ){
+        if ( preg_match( '/order\s+by\s+([a-z|_]+)\s+(asc|desc)/', strtolower( $original_conditions ),$hits ) ){
            if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: order by condition may now be handled<br>\r\n";
              $Clause .= " ORDER BY $hits[1] $hits[2]";
          }
