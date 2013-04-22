@@ -28,12 +28,13 @@ class x_object {
 	private $attributes = null;
 	
 	private $key = null;
+    public $webapp_location = null;
 	
 	//! construct with an optional file
 	public function __construct( $key, $attributes = null, $xml=null  ) {
 		global $container,$webapp_location, $xobjects_location;
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
-
+        $this->webapp_location = $webapp_location;
         // the key
 		$this->key = $key;
         // has the view been found?
