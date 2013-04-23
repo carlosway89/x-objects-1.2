@@ -27,8 +27,7 @@ class xo_controller_manager {
 
             $controller = new $controller_class;
             $method = $this->controller_method();
-            if ( method_exists($controller,$method))
-                $controller->$method();
+            $controller->$method();
         }
         $autoload_bypass_exception = false;
     }
