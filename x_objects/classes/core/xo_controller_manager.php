@@ -50,6 +50,9 @@ class xo_controller_manager {
     private function find_controller_class(){
         $class = null;
         global $container;
+        global $autoload_bypass_exception;
+        $autoload_bypass_exception = true;
+
         $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         // first see if we have a custom router
         $router_class = $this->appname."_router";
@@ -60,15 +63,11 @@ class xo_controller_manager {
             // set class from router
             $this->controller_file = (string)$this->router->controller_file_for($this->key);
             $class = $this->controller_file?"$this->controller_file"."_controller":null;
-            //$route = $router->route_for($key);
-            //$parts = $route?explode('/',$route):array();
-            //$controllers['routed'] = $route? $webapp_location."/app/controllers/$parts[1].php":null;
         }
         if ( ! $class) {
             $parsed_url = parse_url( "http://". $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
             // now get the parts
             $url_parts = explode('/',$parsed_url['path']);
-            //print_r($url_parts);
             $this->controller_file = $url_parts[1]?$url_parts[1]:'home';
             $class = $url_parts[1]?$url_parts[1]."_controller":'home_controller';
         }
