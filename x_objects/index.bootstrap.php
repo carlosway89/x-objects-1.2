@@ -1,4 +1,5 @@
 <?php
+@session_start();
 /**
  * Project: X-Objects MVC framework for PHP and jQuery
  * Version: 1.2.x
@@ -8,85 +9,60 @@
  *
  * This file is called to load up any page or view in the application.
  */
-@session_start();
-$bypass_view = false;
-// start timer
-$x_start_time = microtime(true);
-// start memory
-$x_start_mem = memory_get_usage();
 
-// create a tag
-$tag = new xo_codetag( xo_basename(__FILE__),__LINE__,"main","main");
+final class xo_index_bootstrap{
+    private $bypass_view = false;
+    private $start_time; // start timer
+    private $start_mem;
+    private $req,$ses,$cookie,$uri,$parsed_url,$url_parts;
+    private $key;
+    private $app_name;
 
+    public function __construct(){
+        $this->start_time = microtime(true);
+        $this->start_mem = memory_get_usage();
+        $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
+        // get cookies, session and request
+        $this->req = new REQUEST();
+        $this->ses = new SESSION();
+        $this->cookie = new COOKIE();
+        $this->uri = new REQUEST_URI();
+        $this->parsed_url = parse_url( "http://". $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
+        // now get the parts
+        $this->url_parts = explode('/',$this->parsed_url['path']);
+        $this->key = (string) new xo_controller_key();
+
+    }
+    public function go(){
+        global $container;
+        global $webapp_location, $xobjects_location,$pathroot, $directory_name;
+        $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
+        try { $container = x_objects::instance(); } catch ( Exception $e ) {
+            echo '<span style="color:red;">X-Objects bootup failed: '.$e->getMessage().'</span>';
+        }
+        if ( $container->debug ) echo "$tag->event_format: key is $this->key<br>";
+        $this->app_name = $container->appname;
+        $manager = new xo_controller_manager($this->key,$this->app_name);
+        $manager->load_controller();
+        if ( $container->debug && $container->debug_level >= 5) echo "$tag->event_format: container SINGLETON created<br>\r\n";
+
+   }
+}
+
+// bootstrap file
 $container = null;
-try { $container = x_objects::instance(); } catch ( Exception $e ) {
-	echo '<span style="color:red;">X-Objects bootup failed: '.$e->getMessage().'</span>';
-} 
-if ( $container->debug && $container->debug_level >= 5) echo "$tag->event_format: container SINGLETON created<br>\r\n";
-
-// set debugging
-$debug = Debugger::enabled();	
-
-// get cookies, session and request
-$req = new REQUEST();
-$ses = new SESSION();
-$cookie = new COOKIE();
-$uri = new REQUEST_URI();
-$parsed_url = parse_url( "http://". $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
-// now get the parts
-$url_parts = explode('/',$parsed_url['path']);
-
-
 // get webroot and pathroot
 global $webroot, $pathroot, $directory_name,$xobjects_location;
 
 // load global functions
 require_once( $xobjects_location."include/xo_functions.php");
 
-// api call?
-if ( preg_match( '/^\/api/', $_SERVER['REQUEST_URI'] )){
-	require_once( $pathroot . $directory_name . "/api/api.php");
-} else {
+// create the bootstrap file
+$bootstrap = new xo_index_bootstrap();
+// run it
+$bootstrap->go();
 
-    /**
-     * get the controller key
-     */
-    $key = (string) new xo_controller_key();
-
-    $app_name = $container->appname;
-    global $webapp_location, $xobjects_location,$pathroot, $directory_name;
-    // include the global controller if defined
-    if ( file_exists( $webapp_location."/app/controllers/global.php"))
-	    require_once( $webapp_location."/app/controllers/global.php");
-    else {
-	    // is auto code generation enabled?
-	    if ( @$container->config->code_generation->missing->controllers == "yes" ){
-		    if ( copy( $pathroot.$directory_name."/templates/controller.php", $webapp_location."/app/controllers/global.php"))
-			    require_once( $webapp_location."/app/controllers/global.php");
-	    }
-		
-    }
-    // include controller code
-    $controllers = array(
-		$webapp_location. "/app/controllers/$key.php",
-		$xobjects_location . "controllers/$key.php"
-    );
-    // check for a specific route
-    $router_class = $container->appname."_router";
-    global $autoload_bypass_exception;
-    $autoload_bypass_exception = true;
-    $route = "";
-    if ( class_exists($router_class)){
-        if ( $container->debug ) echo "$tag->event_format: found a custom router<br>\r\n";
-        $router = new $router_class();
-        $route = $router->route_for($key);
-        if ( $container->debug ) echo "$tag->event_format: found a custom route: $route<br>\r\n";
-        $controllers['routed'] = $route? $webapp_location."/app/controllers/$route.php":null;
-    }
-    $autoload_bypass_exception = false;
-    if ( $container->debug ) echo "$tag->event_format: done with prelimaries, ready to load controller<br>\r\n";
-    if ( $container->debug ) echo "$tag->event_format: searching for controllers in ".new xo_array( $controllers)."<br>\r\n";
-
+/*
     if ( file_exists( $controllers[1] )){
         require_once( $controllers[1] );
         $class = $key."_controller";
@@ -174,7 +150,7 @@ if ( preg_match( '/^\/api/', $_SERVER['REQUEST_URI'] )){
     $view = $pathroot . "/views/$key.php";
     if ( file_exists( $view ) )
 	    require_once( $view );
-}
+*/
     if ( $container->debug ) echo "$tag->event_format: done rendering page, ready to shut down<br>";
     // explicitly destroy the container
     if ( $container) $container->destroy();
