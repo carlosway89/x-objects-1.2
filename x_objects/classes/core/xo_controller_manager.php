@@ -36,7 +36,7 @@ class xo_controller_manager {
         $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         $method = null;
         if ( $this->router)
-            $method = $this->router->controller_method_for($this->key);
+            $method = $this->router->controller_method($this->key);
         if ( ! $method){
             $parsed_url = parse_url( "http://". $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
             // now get the parts
@@ -60,7 +60,7 @@ class xo_controller_manager {
             if ( $container->debug ) echo "$tag->event_format: found a custom router<br>\r\n";
             $this->router = new $router_class();
             // set class from router
-            $this->controller_file = (string)$this->router->controller_file_for($this->key);
+            $this->controller_file = (string)$this->router->controller_file($this->key);
             $class = $this->controller_file?"$this->controller_file"."_controller":null;
         }
         if ( ! $class) {
@@ -84,6 +84,6 @@ class xo_controller_manager {
         if ( file_exists( $file))
             require_once( $file);
         elseif ( file_exists( $xobjects_location. "controllers/$this->controller_file.php"))
-            require_once( $xobjects_location. "controller/$this->controller_file.php");
+            require_once( $xobjects_location. "controllers/$this->controller_file.php");
     }
 }

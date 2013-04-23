@@ -194,7 +194,11 @@ class DataSource2 extends AttributedObject {
         return in_array( $name, $this->no_import);
     }
 
-
+    // get search field
+    public function search_field(){
+        $fname = (string)$this->xml->search_field;
+        return $fname?$fname:'name';
+    }
 
     // is a field required?
 	public function required( $name){

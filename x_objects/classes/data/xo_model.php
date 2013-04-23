@@ -110,6 +110,11 @@ class xo_model extends magic_object {
         $object = new $this->key();
         return $object->source()->keycol();
     }
+    // get the search field
+    public function search_field(){
+        $object = new $this->key();
+        return $object->source()->search_field();
+    }
 
 }
 ?>
