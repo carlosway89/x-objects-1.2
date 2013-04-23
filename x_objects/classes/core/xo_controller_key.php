@@ -15,7 +15,7 @@ class xo_controller_key {
         $key = null;
         // get the parsed url
         $parsed_url = parse_url( "http://". $_SERVER['HTTP_HOST']. $_SERVER['REQUEST_URI']);
-        if ( $container->debug ) echo "$tag->event_format : parsed URL is ".new xo_array($parsed_url)."<br>\r\n";
+        if ( @$container->debug ) echo "$tag->event_format : parsed URL is ".new xo_array($parsed_url)."<br>\r\n";
         // now get the parts
         $url_parts = explode('/',$parsed_url['path']);
         // if available, set form part 1
