@@ -119,6 +119,8 @@ class xobj_controller extends xo_controller {
             break;
             // update a record
             case 'u':
+                // required for UI feedback on successful actions
+                $result['message'] = 'The record was updated successfully';
                 if (! $id || ! is_numeric($id)){
                     $result['result'] = "error";
                     $result["error"] = "No record id provided";
@@ -181,7 +183,7 @@ class xobj_controller extends xo_controller {
                     $deletor = $this->uri->part(6)?(int)$this->uri->part(6):0;
                     $result['result'] = $o->safe_delete($deletor)?"success":"error";
                     $result['error'] = $o->delete_error;
-                    $result['message'] = "The $c was deleted";
+                    $result['message'] = "The record has been successfully deleted";
                 break;
                 case 'delete':
                     $result['result'] = $o->delete()?"success":"error";
