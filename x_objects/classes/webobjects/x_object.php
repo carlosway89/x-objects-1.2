@@ -141,14 +141,17 @@ class x_object {
 	public function __get( $what ) {
 	
 		switch( $what ) {
-		
 			case 'xhtml':
 				$xhtml = $this->xhtml();
 				return $xhtml;
 				
 			break;
-		
-		}
+            // New! You can grab the business object by it's classname directly
+            default:
+                $classname = get_class($this->business_object);
+                return $what == $classname?$this->business_object:null;
+            break;
+        }
 	}
 	
 	/**
