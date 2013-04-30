@@ -1,37 +1,29 @@
 <?php
-
 /**
- * Description: An x_object() is one of the most important and useful classes of objects in the framework.  
- * It's a representation of a single entity, or a member of an array or grouping, that is bound to an 
- * XML "view" file.  As such, x_objects are used mainly to display objects within web pages, using
- * xQuery.
+ * An X-Object is a web component "Controller" that links a Business Object ("model")
+ * with an HTML/PHP "View" packaged nicely so it can be invoked anywhere on the page
+ * or within an Ajax Controller.
+ *
+ * The main purpose of an X-Object is to facilitate re-use of code and better abstraction
+ * for rendering repeating and complex components
+ *
  * @author David Owen Greenberg <david.o.greenberg@gmail.com>
  */
-
-// global needed for view
-$business_object = null;
-$resources = null;
-
 class x_object {
-
-    /**
-     * Public member grants direct access to the object in the view file
-     */
-    public $business_object = null;
-
+    public $business_object = null; // grant access to displayed object
     private $debug = false;
-
-	// the xml
-	private $xml = null;
-	
-	// attributes
+    private $xml = null;
 	private $attributes = null;
-	
 	private $key = null;
     public $webapp_location = null;
-	
-	//! construct with an optional file
-	public function __construct( $key, $attributes = null, $xml=null  ) {
+
+    /**
+     * Create a new Business Object
+     * @param $key string unique Id for X-Object View File
+     * @param $attributes
+     * @param null $xml
+     */
+    public function __construct( $key, $attributes = null, $xml=null  ) {
 		global $container,$webapp_location, $xobjects_location;
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         $this->webapp_location = $webapp_location;
@@ -56,29 +48,16 @@ class x_object {
                 break;
             }
         }
-
-        if ( ! $found) try {
-			// first if key is null,
-			if (!$key) {
-				// set xml
-				$this->xml = new RealXML( is_object($xml)? $xml:simplexml_load_string($xml) );
-			} else {
-				$this->xml = new RealXML( $key );
-			}
-		} catch ( ObjectNotInitializedException $oe ) {
-		
-			throw new ObjectNotInitializedException("I can't display the X-Object <span style='font-weight:bold;color:green;'>$key</span>.  Are you sure <span style='color:blue;font-weight:bold;'>$key.php</span> or <span style='color:blue;font-weight:bold;'>$key.xml</span> exists in /app/views?");
-		
-		}
-	
 		$this->attributes = $attributes;
-		if ( $container->debug)
-			echo "$tag->event_format : DONE creating a new x-object of type $key<br>\r\n";
 	}
-	
-	
-	//! return as html
-	public function html( $busObj = null,$log = false ) {
+
+    /**
+     * return the X-Object as an xHTML string
+     * @param $busObj object the Business Object to display
+     * @param $log bool whether or not to log the action
+     * @return string the xHTML representation
+     */
+    public function html( $busObj = null,$log = false ) {
         $this->business_object = $busObj;
 		global $container,$business_object,$page_vars,$resources;
       	$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
@@ -90,13 +69,9 @@ class x_object {
             require($this->view_file);
         } else
             $html = $this->xml->html( $busObj , $this->attributes );
-
 		if ( $container->debug ) echo "$tag->event_format : DONE generating html for this object, the business object is is ". get_class( $busObj) . "<br>\r\n";
-		
 		return $html;
 	}
-
-
 	// synonym for above method
 	public function xhtml( $busObj = null, $log = false ) {
         return $this->html($busObj,$log);
@@ -141,6 +116,10 @@ class x_object {
 	public function __get( $what ) {
 	
 		switch( $what ) {
+            // synonyms to grab the business object
+            case 'busobj':case 'bus_obj':case 'bobj':case 'obj':case 'the_object':
+                return $this->business_object;
+            break;
 			case 'xhtml':
 				$xhtml = $this->xhtml();
 				return $xhtml;
