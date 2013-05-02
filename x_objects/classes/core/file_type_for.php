@@ -11,7 +11,7 @@ class file_type_for {
     private $extension = "";
     private $type = 'unknown';
     private $translations = array(
-        'video'=>array('avi','wmv','mov','mpg','mpeg','mp4','flv'),
+        'video'=>array('avi','wmv','mov','mpg','mpeg','mp4','flv','ogg'),
         'document'=>array('pdf','xls','doc','ppt','txt','rtf','xlsx','docx','pptx'),
         'image'=>array('jpg','jpeg','gif','png','bmp','tif','tga'),
         'audio'=>array('mp3','wma','wav','m4a','flac','aiff','aif','snd','wv','ape','aac')
