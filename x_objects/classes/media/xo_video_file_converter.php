@@ -46,7 +46,7 @@ class xo_video_file_converter {
                     // if ogg...
                     if ($this->extension == 'mp4'){
                         $new_filename = preg_replace('/\.mp4/','.ogg',$this->filename);
-                        $cmd = "$cname $this->filename $new_filename 2>&1";
+                        $cmd = (string) $config->directory . ''."$cname $this->filename $new_filename 2>&1";
                     }
                     $this->command = $cmd;
                     $command = new xo_shell_command($cmd);
