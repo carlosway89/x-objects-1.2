@@ -33,9 +33,16 @@ class xo_file_directory {
     }
 
     /**
+     * @param $skip_dots bool if true do not return "." or ".."
      * @return string the next entry in the directory
      */
-    public function next(){
-        return $this->dir?$this->dir->read():null;
+    public function next($skip_dots = false){
+        $dir = $this->dir?$this->dir->read():null;
+        // skip dots
+        if ($skip_dots && $dir){
+            while (in_array($dir,array('.','..')))
+                $dir = $this->dir->read();
+        }
+        return $dir;
     }
 }
