@@ -186,6 +186,11 @@ class xobj_controller extends xo_controller {
                     $result['message'] = "The record has been successfully deleted";
                 break;
                 case 'delete':
+                    $tokens = explode('_',$c);
+                    array_walk($tokens,function(&$item,$index){
+                       $item = ucfirst($item);
+                    });
+                    $result['message'] = 'The '.implode(' ',$tokens). ' has been deleted';
                     $result['result'] = $o->delete()?"success":"error";
                     $result['error'] = $o->delete_error;
                     break;

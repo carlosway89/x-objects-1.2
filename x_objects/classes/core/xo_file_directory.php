@@ -36,7 +36,7 @@ class xo_file_directory {
      * @param $skip_dots bool if true do not return "." or ".."
      * @return string the next entry in the directory
      */
-    
+
     public function next($skip_dots = false){
         $dir = $this->dir?$this->dir->read():null;
         // skip dots
