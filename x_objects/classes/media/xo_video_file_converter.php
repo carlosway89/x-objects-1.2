@@ -33,7 +33,7 @@ class xo_video_file_converter {
             // convert from AVI
             if ( in_array($this->extension,$this->extensions)){
                 // support to convert MP4 to Ogg
-                $new_extension = $this->extension == 'mp4'?'.ogg':'.mp4';
+                $new_extension = $this->extension == 'mp4'?'.ogv':'.mp4';
                 $this->new_filename = preg_replace("/\.$this->extension/",$new_extension,$this->filename);
                 $config = $this->container->config->ffmpeg;
                 if ( ! $config )
