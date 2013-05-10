@@ -91,6 +91,8 @@ class xobj_controller extends xo_controller {
         $tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         $c = $this->uri->part(3);
         $id = $this->uri->part(4);
+        if ( $container->debug && $container->debug_level >1)
+            echo "<span style='color:blue;'>$tag->event_format: about to get datasource for $c</span><br>";
         $s = call_user_func("$c::source");
         $k = $s->keycol();
         $a = $this->uri->part(5);
@@ -119,6 +121,8 @@ class xobj_controller extends xo_controller {
             break;
             // update a record
             case 'u':
+                if ($container->debug )       echo "<span style='color:blue;'>$tag->event_format: API call for Record Update</span><br>";
+
                 // required for UI feedback on successful actions
                 $result['message'] = 'The record was updated successfully';
                 if (! $id || ! is_numeric($id)){
@@ -135,7 +139,7 @@ class xobj_controller extends xo_controller {
                 }
             break;
         }
-        if (! $container->debug) header("Content-Type: application/json");
+        if (! $container->debug && ! $container->app_debug) header("Content-Type: application/json");
         echo json_encode($result);
 
 

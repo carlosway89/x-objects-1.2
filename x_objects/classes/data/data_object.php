@@ -41,9 +41,11 @@ abstract class data_object extends AttributedObject
 	private static $itPosition = 0,$itKeys;
 
     protected $save_type = '';
+    private $search = null;
 
 	//! construct a new object, where the child class specifies the datasource, etc.
 	public function __construct( $search = null , $datasource) {
+        $this->search = new business_object_search($search);
         // load any resources
         if ( ! self::$resources) self::$resources = new xo_resource_bundle(get_class());
         // set up logging and debugging

@@ -48,7 +48,9 @@ class DataSource2 extends AttributedObject {
 	function __construct( $xml ) {
 		global $container;
 		$tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
-		
+
+        if ( $container->debug && $container->debug_level >1)
+            echo "$tag->event_format: Loading DataSource for ".(string)$xml->name."<br>";
 		// first argument must be an object of type SimpleXMLElement
 		if ( ! is_object( $xml ) )
 			throw new IllegalArgumentException( "DataSource2::__construct( $xml ): First argument must be an object." );

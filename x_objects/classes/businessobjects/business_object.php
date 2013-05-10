@@ -36,6 +36,7 @@ abstract class business_object extends data_object
 	private $validation = null;
 	// cache available for all business objects
     protected $cache = null;
+    protected static $data_source = null;
 
 	//! handle calls to "undefined" methods
 	public function __call( $func, $args ) {
@@ -281,6 +282,7 @@ abstract class business_object extends data_object
 	
 	//! construct
 	public function __construct( $key, $search = null) {
+
         // this can help with performance
         static $sources = array();
         // load cache
@@ -766,7 +768,7 @@ abstract class business_object extends data_object
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 		$num = 0;
         if ( $container->debug)
-            echo "$tag->event_format : jsonStr=$jsonStr<br>\r\n";
+            echo "$tag->event_format : jsonStr=".new xo_string($jsonStr)."<br>\r\n";
 		$json = is_string( $jsonStr)?json_decode( stripslashes( $jsonStr )):$jsonStr;
 		if ( $container->debug)
 			echo "$tag->event_format : json=".new xo_string($json)."<br>\r\n";
