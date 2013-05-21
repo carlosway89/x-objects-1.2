@@ -493,7 +493,7 @@ abstract class data_object extends AttributedObject
             }
 
 			// set the error
-			$this->save_error = $this->insert_error;
+			$this->save_error = $this->insert_error . "($query)";
 //			$container->log(xevent::warning, "$tag->event_format : a SQL error occurred saving changes ( $this->save_error )");
 				
 			if ( $container->debug ) { 

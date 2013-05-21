@@ -197,7 +197,7 @@ class MySQLService2 implements x_service  {
 		global $container;
 		$tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
 		
-		if ( Debugger::enabled() && $container->debug_level > 2) { echo "$tag->event_format : Query $Query called by $caller<br>\r\n"; }
+		if ( $container->debug && $container->debug_level > 1) { echo "$tag->event_format : QUERY!! $Query called by $caller<br>\r\n"; }
 		$Result = self::getSQL()->query( $Query );
 		// performance
         if ($container->performance_tracking) {
