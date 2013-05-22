@@ -151,6 +151,15 @@ class x_object {
         }
         return $str;
     }
+
+    /**
+     * get current browser
+     * @return string browser name
+     */
+    public function browser(){
+        global $container;
+        return $container->browser;
+    }
 	
 }
 
