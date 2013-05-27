@@ -25,8 +25,8 @@ class xo_video_file_converter {
         $this->filename = $this->new_filename = $filename;
         $this->type = (string) new file_type_for($filename);
         $this->extension = (string) new file_extension_for($filename);
-        $config = $this->container->config->ffmpeg;
-        if (! $config){
+        $this->config = $this->container->config->ffmpeg;
+        if (! $this->config){
             $this->error = 'No ffmpeg configuration';
         }
     }
@@ -69,7 +69,7 @@ class xo_video_file_converter {
             $this->commands['ogv'] = $cmd;
             $command = new xo_shell_command($cmd);
             if ( ! $command->execute())
-                $this->error = 'Could not run server video converter';
+                $this->error = $cname.'Could not run server video converter';
             else {
                 $result = true;
                 $this->output = $command->output;
