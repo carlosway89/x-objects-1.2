@@ -31,7 +31,7 @@ class xo_video_file_converter {
         }
     }
     public function convert(){
-        $result = false;
+        $result = true;
         if ( $this->type != 'video')
             $this->error = "$this->filename: Not a video file";
         else {
@@ -50,6 +50,8 @@ class xo_video_file_converter {
      * @return bool true if successfully converted
      */
     private function to_ogv(){
+        global $container;
+
         $result = true;
         // support to convert MP4 to Ogg
         $new_extension = $this->extension == 'mp4'?'.ogv':'.mp4';
