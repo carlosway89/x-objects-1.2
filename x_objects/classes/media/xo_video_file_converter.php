@@ -100,9 +100,10 @@ class xo_video_file_converter {
             $ext = $this->container->platform() == 'win'?".exe":'';
             $cname = "ffmpeg$ext";
             $new_filenames['ogv'] = preg_replace('/\.mp4/','.ogv',$this->filename);
-            $cmd = (string) $this->config->directory . ''."$cname $this->filename ".$new_filenames['ogv']. " 2>&1";
+            $cmd = (string) $this->config->directory . ''."$cname -i $this->filename ".$new_filenames['ogv']. " 2>&1";
             $this->commands['ogv'] = $cmd;
             $command = new xo_shell_command($cmd);
+            if ( $this->logger) $this->logger->log("Converting to OGV cmd= $cmd new filename ".$this->new_filenames['ogv'],1,new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__));
             if ( ! $command->execute())
                 $this->error = $cname.'Could not run server video converter';
             else {
