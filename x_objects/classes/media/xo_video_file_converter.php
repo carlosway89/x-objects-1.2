@@ -99,7 +99,6 @@ class xo_video_file_converter {
         else {
             $ext = $this->container->platform() == 'win'?".exe":'';
             $cname = "ffmpeg$ext";
-            $new_filenames['ogv'] = preg_replace('/\.mp4/','.ogv',$this->filename);
             $cmd = (string) $this->config->directory . ''."$cname -i $this->filename ".$new_filenames['ogv']. " 2>&1";
             $this->commands['ogv'] = $cmd;
             $command = new xo_shell_command($cmd);
