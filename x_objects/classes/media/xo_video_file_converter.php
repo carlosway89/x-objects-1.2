@@ -95,12 +95,12 @@ class xo_video_file_converter {
         if ( ! $this->config )
             $result = false;
         else {
-            if ( $this->logger) $this->logger->log("Converting to webM new filename ".$this->new_filenames['webm'],1,new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__));
             $ext = $this->container->platform() == 'win'?".exe":'';
             $cname = "ffmpeg$ext";
             $cmd = (string) $this->config->directory . ''.$cname.' -i '.$this->filename.
                 '  '. $this->new_filenames['ogv'] . ' 2>&1 ';
             $this->commands['webm'] = $cmd;
+            if ( $this->logger) $this->logger->log("Converting to webM cmd= $cmd new filename ".$this->new_filenames['webm'],1,new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__));
             $command = new xo_shell_command($cmd);
             if ( ! $command->execute())
                 $this->error = 'Could not run server video converter';
