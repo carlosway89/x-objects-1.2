@@ -17,7 +17,7 @@ class xo_video_file_converter {
     public $error = '';
     public $output = '';
     private $config = null;
-    private $extensions = array('avi','wmv','mov','mp4');
+    private $extensions = array('flv',  'avi','wmv','mov','mp4');
     public $commands = array();
     private $logger = null;
     public function __construct($filename,$directory,$logger = null){
