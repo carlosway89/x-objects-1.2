@@ -19,8 +19,10 @@ class xo_video_file_converter {
     private $config = null;
     private $extensions = array('avi','wmv','mov','mp4');
     public $commands = array();
-    public function __construct($filename){
+    private $logger = null;
+    public function __construct($filename,$directory,$logger = null){
         global $container;
+        $this->logger = $logger;
         $this->container = (object)$container;
         $this->filename = $this->new_filename = $filename;
         $this->type = (string) new file_type_for($filename);
@@ -93,6 +95,7 @@ class xo_video_file_converter {
         if ( ! $this->config )
             $result = false;
         else {
+            if ( $this->logger) $this->logger->log("Converting to webM new filename ".$this->new_filenames['webm'],1,new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__));
             $ext = $this->container->platform() == 'win'?".exe":'';
             $cname = "ffmpeg$ext";
             $cmd = (string) $this->config->directory . ''.$cname.' -i '.$this->filename.
