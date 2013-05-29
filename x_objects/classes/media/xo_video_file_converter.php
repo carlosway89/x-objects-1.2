@@ -9,6 +9,12 @@
  */
 
 class xo_video_file_converter {
+
+    // flags for conversion types
+    const convert_mp4 = 1;
+    const convert_ogv = 2;
+    const convert_webm = 4;
+
     private $container = null;
     private $filename = '';
     public $new_filenames = array();
@@ -20,7 +26,14 @@ class xo_video_file_converter {
     private $extensions = array('flv',  'avi','wmv','mov','mp4');
     public $commands = array();
     private $logger = null;
-    public function __construct($filename,$directory,$logger = null){
+
+    /**
+     * Create a new Video Converter
+     * @param $filename string the name of the file to convert, including full path
+     * @param $directory string (deprecated) directory into which to save converted file
+     * @param $logger object of type xo_loggable to allow for event logging
+     */
+    public function __construct($filename,$directory = '',$logger = null){
         global $container;
         $this->logger = $logger;
         $this->container = (object)$container;
@@ -32,7 +45,13 @@ class xo_video_file_converter {
             $this->error = 'No ffmpeg configuration';
         }
     }
-    public function convert(){
+
+    /**
+     * Convert the specified file to indicated formats
+     * @param int $bits indicates which formats to convert
+     * @return bool true if successful for all conversions
+     */
+    public function convert($bits = 7){
         $result = true;
         if ( $this->type != 'video')
             $this->error = "$this->filename: Not a video file";
@@ -40,9 +59,9 @@ class xo_video_file_converter {
             // convert from AVI
             if ( in_array($this->extension,$this->extensions)){
                 // convert to MP4, Ogv and webm
-                $result &= $this->to_mp4();
-                $result &= $this->to_ogv();
-                $result &= $this->to_webm();
+                if ( $bits & self::convert_mp4) $result &= $this->to_mp4();
+                if ( $bits & self::convert_ogv) $result &= $this->to_ogv();
+                if ( $bits & self::convert_webm) $result &= $this->to_webm();
             }
         }
         return $result;

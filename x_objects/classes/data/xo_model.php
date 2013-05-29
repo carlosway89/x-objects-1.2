@@ -3,6 +3,12 @@ class xo_model extends magic_object {
 	public function __construct($key){
 		$this->key = $key;
 	}
+
+    /**
+     * Find the first Object matching a query
+     * @param string $query the query to execute
+     * @return object|null the resulting object if any
+     */
     public function find_first($query="all"){
         $arr = object_factory::create($this->key,null,1,null,null,$query);
         $array_keys = array_keys($arr);
