@@ -824,7 +824,7 @@ abstract class business_object extends data_object
         $this->deleted_date = date('Y-m-d H:i:s');
 		$res = $this->save();
         if ( ! $res){
-            self::$last_class_error = $this->save_error;
+            self::$last_class_error = $this->last_error = $this->save_error;
         }
         return $res;
 	}

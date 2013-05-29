@@ -186,7 +186,7 @@ class xobj_controller extends xo_controller {
                 case 'safe_delete':
                     $deletor = $this->uri->part(6)?(int)$this->uri->part(6):0;
                     $result['result'] = $o->safe_delete($deletor)?"success":"error";
-                    $result['error'] = $o->delete_error;
+                    $result['error'] = $o->save_error;
                     $result['message'] = "The record has been successfully deleted";
                 break;
                 case 'delete':
