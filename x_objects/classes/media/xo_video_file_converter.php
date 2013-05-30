@@ -39,7 +39,7 @@ class xo_video_file_converter {
         $this->container = (object)$container;
         $this->filename = $this->new_filename = $filename;
         $this->type = (string) new file_type_for($filename);
-        $this->extension = (string) new file_extension_for($filename);
+        $this->extension = strtolower((string) new file_extension_for($filename));
         $this->config = $this->container->config->ffmpeg;
         if (! $this->config){
             $this->error = 'No ffmpeg configuration';
