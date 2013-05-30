@@ -122,7 +122,7 @@ class xo_video_file_converter {
                 // get command name
                 $cname = "ffmpeg$ext";
                 // construct command for this conversion
-                $cmd = (string) $this->config->directory . ' '.$cname.' -i '.$this->filename. $args[$what]
+                $cmd = (string) $this->config->directory .$cname.' -i '.$this->filename. $args[$what]
                     . $this->new_filenames[$what] . ' 2>&1 ';
                 // save it
                 $this->commands[$what] = $cmd;
