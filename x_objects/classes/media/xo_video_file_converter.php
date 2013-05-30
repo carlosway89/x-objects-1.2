@@ -39,7 +39,7 @@ class xo_video_file_converter {
         $this->container = (object)$container;
         $this->filename = $this->new_filename = $filename;
         $this->type = (string) new file_type_for($filename);
-        $this->extension = strtolower((string) new file_extension_for($filename));
+        $this->extension = (string) new file_extension_for($filename);
         $this->config = $this->container->config->ffmpeg;
         if (! $this->config){
             $this->error = 'No ffmpeg configuration';
@@ -57,7 +57,7 @@ class xo_video_file_converter {
             $this->error = "$this->filename: Not a video file";
         else {
             // convert from AVI
-            if ( in_array($this->extension,$this->extensions)){
+            if ( in_array(strtolower($this->extension),$this->extensions)){
                 // convert to MP4, Ogv and webm
                 if ( $bits & self::convert_mp4) $result &= $this->to_mp4();
                 if ( $bits & self::convert_ogv) $result &= $this->to_ogv();
@@ -75,7 +75,7 @@ class xo_video_file_converter {
         global $container;
         $result = true;
 
-        if ($this->extension =='mp4')
+        if (strtolower($this->extension) =='mp4')
             return $result;
         else{
             // support to convert MP4 to Ogg
