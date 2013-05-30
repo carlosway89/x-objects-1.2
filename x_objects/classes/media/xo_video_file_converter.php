@@ -113,8 +113,12 @@ class xo_video_file_converter {
             $new_extension = ".$what";
             // set new filename
             $this->new_filenames[$what] = preg_replace("/\.$this->extension/",$new_extension,$this->filename);
+            if ( file_exists($this->new_filenames[$what])){
+                if ($verbose) echo "$tag->event_format: new file already exists, so not re-converting\r\n";
+                $result = false;
+            }
             // must have a configuration!
-            if ( ! $this->config )
+            elseif ( ! $this->config )
                 $result = false;
             else {
                 // allow to run on various platforms
