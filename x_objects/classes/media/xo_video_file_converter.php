@@ -49,21 +49,27 @@ class xo_video_file_converter {
     /**
      * Convert the specified file to indicated formats
      * @param int $bits indicates which formats to convert
+     * @param bool $verbose if true sends verbose output to STDOUT
      * @return bool true if successful for all conversions
      */
-    public function convert($bits = 7){
+    public function convert($bits = 7,$verbose=false){
+        $tag = new xo_codetag(xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
         $result = true;
         if ( $this->type != 'video')
             $this->error = "$this->filename: Not a video file";
         else {
             // convert from AVI
             if ( in_array(strtolower($this->extension),$this->extensions)){
+                if ($verbose) echo "$tag->event_format: $this->filename is a candidate for conversion\r\n";
                 // convert to MP4, Ogv and webm
                 if ( $bits & self::convert_mp4) $result &= $this->to_mp4();
                 if ( $bits & self::convert_ogv) $result &= $this->to_ogv();
                 if ( $bits & self::convert_webm) $result &= $this->to_webm();
             }
         }
+        $success = $result?'success':'error';
+        if ($verbose) echo "$tag->event_format: $success converting $this->filename\r\n";
+
         return $result;
     }
 
