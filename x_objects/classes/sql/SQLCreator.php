@@ -85,7 +85,7 @@ final class SQLCreator{
 				continue;
 				
 			// special case!
-			if ( preg_match ( '/\s+OFFSET\s+/' , strtoupper( $Condition ) ) ){
+			if ( preg_match ( '/OFFSET\s+/' , strtoupper( $Condition ) ) ){
                 if ($container->debug && $container->debug_level >=2 ) echo "$tag->event_format: offset condition must be handled at end of loop!<br>\r\n";
                 continue;
 
