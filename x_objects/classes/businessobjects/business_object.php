@@ -539,7 +539,15 @@ abstract class business_object extends data_object
         if ( Debugger::enabled() )
 			echo "$tag->event_format : saving record of type <span style=\"color: blue; font-weight: bold\">$this->key</span><br>\r\n";
 
-			$result = parent::save();
+        // before save trigger
+        $before_trigger_result = true;
+        $this->save_type = $this->isLoaded?'update':'insert';
+        $trigger_name = "trigger_before_$this->save_type";
+        if (method_exists($this,$trigger_name))
+            $before_trigger_result = $this->$trigger_name();
+
+        // only fire if before trigger was successful
+        if ( $before_trigger_result) $result = parent::save();
 		
         self::$last_class_error = $this->save_error;
         // after triggers

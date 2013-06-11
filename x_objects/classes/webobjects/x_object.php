@@ -68,7 +68,12 @@ class x_object {
             $html = '';
             require($this->view_file);
         } else
-            $html = $this->xml->html( $busObj , $this->attributes );
+        {
+            if ( $xml === null){
+                $html = "<div class='x-object warning'>$tag->event_format: The given object is null</div>";
+            } else
+                $html = $this->xml->html( $busObj , $this->attributes );
+        }
 		if ( $container->debug ) echo "$tag->event_format : DONE generating html for this object, the business object is is ". get_class( $busObj) . "<br>\r\n";
 		return $html;
 	}
