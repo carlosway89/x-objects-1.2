@@ -353,7 +353,10 @@ public static function get_time_difference( $start, $end )
 		} elseif(preg_match('|Firefox/([0-9\.]+)|' ,$useragent,$matched)) {
         	$browser_version=$matched[1];
         	$browser = 'ff' . substr ( $browser_version, 0 , 1) ;
-		} elseif(preg_match('|Safari/([0-9\.]+)|' ,$useragent,$matched)) {
+        } elseif(preg_match('|Chrome/([0-9\.]+)|' ,$useragent,$matched)) {
+            $browser_version=$matched[1];
+            $browser = 'Chrome' . substr ( $browser_version, 0 , 2) ;
+        } elseif(preg_match('|Safari/([0-9\.]+)|' ,$useragent,$matched)) {
         	$browser_version=$matched[1];
         	$browser = 'Safari' ;
 		}
