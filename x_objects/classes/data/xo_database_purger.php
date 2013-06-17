@@ -22,7 +22,7 @@ class xo_database_purger {
     }
     public function purge(){
         global $container;
-        $check_date = date("-$this->age ".$this->unit_token($this->unit));
+        $check_date = date('Y-m-d H:i:s', "-$this->age ".$this->unit_token($this->unit));
         $sql = "DELETE FROM `$this->table` WHERE `$this->column` < $check_date";
         echo $sql;
         //$mysql = $container->services->mysql_service;
