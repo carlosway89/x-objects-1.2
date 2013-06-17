@@ -16,7 +16,7 @@ class xo_database_purger {
     }
     private function unit_token($unit){
         switch($unit){
-            case self::days: return 'day'; break;
+            case self::days: return 'days'; break;
             default: return ''; break;
         }
     }
@@ -24,7 +24,7 @@ class xo_database_purger {
         global $container;
         $differ = "-$this->age ".$this->unit_token($this->unit);
         echo "differ = $differ\r\n";
-        $check_date = date('Y-m-d H:i:s', $differ);
+        $check_date = date('Y-m-d H:i:s', strottime($differ));
         $sql = "DELETE FROM `$this->table` WHERE `$this->column` < $check_date";
         echo $sql."\r\n";
         //$mysql = $container->services->mysql_service;
