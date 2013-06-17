@@ -8,6 +8,7 @@
 class xo_database_purger {
     const days = 1;
     private $table,$age,$unit,$column;
+    public $error = '';
     public function __construct($table,$age,$unit = self::days,$column='created_data'){
         $this->table = $table;
         $this->age = $age;
@@ -26,6 +27,7 @@ class xo_database_purger {
         $check_date = date('Y-m-d H:i:s', strtotime($differ));
         $sql = "DELETE FROM `$this->table` WHERE `$this->column` < $check_date";
         $mysql = $container->services->mysql_service;
-        return $mysql->query($sql);
+        $result =  $mysql->query($sql);
+        if ( ! $result) $this->error = $mysql->getSQLError();
     }
 }
