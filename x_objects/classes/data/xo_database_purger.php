@@ -25,7 +25,7 @@ class xo_database_purger {
         global $container;
         $differ = "-$this->age ".$this->unit_token($this->unit);
         $check_date = date('Y-m-d H:i:s', strtotime($differ));
-        $sql = "DELETE FROM `$this->table` WHERE `$this->column` < $check_date";
+        $sql = "DELETE FROM `$this->table` WHERE `$this->column` < '$check_date'";
         $mysql = $container->services->mysql_service;
         $result =  $mysql->query($sql);
         if ( ! $result) $this->error = $mysql->getSQLError();
