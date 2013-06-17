@@ -7,18 +7,25 @@
 
 class xo_database_purger {
     const days = 1;
+    private $table,$age,$unit,$column;
     public function __construct($table,$age,$unit = self::days,$column='created_data'){
-        global $container;
-        $check_date = date("-$age ".$this->unit_token($unit));
-        $sql = "DELETE FROM `$table` WHERE `$column` < $check_date";
-        echo $sql;
-        //$mysql = $container->services->mysql_service;
-        //return $mysql->query($sql);
+        $this->table = $table;
+        $this->age = $age;
+        $this->unit= $unit;
+        $this->column = $column;
     }
     private function unit_token($unit){
         switch($unit){
             case self::days: return 'day'; break;
             default: return ''; break;
         }
+    }
+    public function purge(){
+        global $container;
+        $check_date = date("-$this->age ".$this->unit_token($this->unit));
+        $sql = "DELETE FROM `$this->table` WHERE `$this->column` < $check_date";
+        echo $sql;
+        //$mysql = $container->services->mysql_service;
+        //return $mysql->query($sql);
     }
 }
