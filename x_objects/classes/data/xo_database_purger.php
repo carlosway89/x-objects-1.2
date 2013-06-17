@@ -28,6 +28,10 @@ class xo_database_purger {
         $sql = "DELETE FROM `$this->table` WHERE `$this->column` < '$check_date'";
         $mysql = $container->services->mysql_service;
         $result =  $mysql->query($sql);
-        if ( ! $result) $this->error = $mysql->getSQLError();
+        if ( ! $result) {
+            $this->error = $mysql->getSQLError();
+            if ( ! $this->error) $result = true;
+        }
+        return $result;
     }
 }
