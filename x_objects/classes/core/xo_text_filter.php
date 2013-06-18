@@ -11,7 +11,7 @@
 abstract class xo_text_filter {
     protected $text = null;
     public function __toString(){
-        if ( $this->text === null) user_error(get_called_class().": text was not set by child class",E_USER_WARNING);
+        //if ( $this->text === null) user_error(get_called_class().": text was not set by child class",E_USER_WARNING);
         return $this->text;
     }
 }
