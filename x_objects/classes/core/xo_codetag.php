@@ -39,8 +39,7 @@ class xo_codetag extends magic_object {
 				$date = date('Y-m-d H:i:s.u',microtime(true));
                 $tag = "[ $date ] [ $this->filename ][ $this->line ][ $this->class{} ][ $this->method" . "() ] [ $this->mem_usage ] ";
                 $diff = $now - self::$last;
-                if ( $container->performance_tracking )
-                    $tag ="<br>\r\n $diff seconds since last action $now - ".self::$last."<br>\r\n$tag";
+                //if ( $container->performance_tracking )$tag ="<br>\r\n $diff seconds since last action $now - ".self::$last."<br>\r\n$tag";
                 self::$last = $now;
                 return $tag;
 			break;

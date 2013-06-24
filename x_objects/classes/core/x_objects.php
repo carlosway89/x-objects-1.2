@@ -72,9 +72,11 @@ class x_objects {
         }
 
         // explicity destroy any service singleton
-        $sc = (string)$this->xml->app->name;
+        $sc = (string)$this->appname;
         if ( class_exists($sc) ){
             $sc::instance()->destroy();
+        } else {
+            if ($this->debug || $this->app_debug) echo "$t->event_format: instance not found for $sc<br>\r\n";
         }
 
 		if ( $this->debug){

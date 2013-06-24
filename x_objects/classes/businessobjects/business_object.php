@@ -38,6 +38,9 @@ abstract class business_object extends data_object
     protected $cache = null;
     protected static $data_source = null;
 
+    // the object cache
+    private static $oCache = array();
+
 	//! handle calls to "undefined" methods
 	public function __call( $func, $args ) {
 		// set up logging and debugging
@@ -282,7 +285,7 @@ abstract class business_object extends data_object
 	
 	//! construct
 	public function __construct( $key, $search = null) {
-
+        global $container;
         // this can help with performance
         static $sources = array();
         // load cache
@@ -320,6 +323,11 @@ abstract class business_object extends data_object
 			// load resources
             $this->bo_resources = new xo_resource_bundle(get_called_class());
 
+        // add to map if exists
+        $appname = $container->appname;
+        $service = $container->services->$appname;
+        if (method_exists($service,'map_bo'))
+            $service->map_bo(get_called_class(). "=>". $search);
     }
 	
 	//! get magic function
@@ -848,9 +856,17 @@ abstract class business_object extends data_object
 		return new xo_model( function_exists('get_called_class')?get_called_class(): self::$called_class);
 	}
 
-	public static function create($search){
+    /**
+     * Creates a new Business Object given search, or if already
+     * cached returns the cached copy
+     * @param $search string search for object
+     * @return mixed
+     */
+    public static function create($search){
 		$class = get_called_class();
-		return new $class($search);
+        if ( ! isset(self::$oCache[$class.'.'.$search]))
+            self::$oCache[$class.'.'.$search] = new $class($search);
+		return self::$oCache[$class.'.'.$search];
 	}
 
     /**
