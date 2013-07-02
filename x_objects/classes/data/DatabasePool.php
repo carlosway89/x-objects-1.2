@@ -51,6 +51,9 @@ class DatabasePool {
         if ( $container->debug && $container->debug_level >2)
             echo "$tag->event_format: about to get connection<br>\r\n";
         if ( ! $this->Connections[self::DEFAULT_CONN]) {
+            if ( ! class_exists('mysqli',false)){
+                throw new ApplicationException("$tag->event_format: The mysqli library for connectivity to the database is not installed.  For this reason, the application cannot run.");
+            }
 			$this->Connections[self::DEFAULT_CONN] =
 				new mysqli( 
 					(string)$this->xml->host, 
