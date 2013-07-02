@@ -66,14 +66,17 @@ class DatabasePool {
 				);
 		
 			// set the charset to UTF-8 for best international support
-			@$this->Connections[self::DEFAULT_CONN]->set_charset('utf8');
+			$this->Connections[self::DEFAULT_CONN]->set_charset('utf8');
 					
 			// throw an exception if unable to connect
 			if ( $this->Connections[self::DEFAULT_CONN]->connect_error)
 				throw new DatabaseException('DatabasePool::getConnection(): An error occurred while connecting to the database server: ' . $this->Connections[self::DEFAULT_CONN]->connect_error);
 		
 		}
-		return $this->Connections[self::DEFAULT_CONN]; 
+        if ( $container->debug && $container->debug_level >2)
+            echo "$tag->event_format: done getting connection, returning it<br>\r\n";
+
+        return $this->Connections[self::DEFAULT_CONN];
 	
 	}
 
