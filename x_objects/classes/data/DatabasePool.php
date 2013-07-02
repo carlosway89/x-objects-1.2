@@ -51,11 +51,7 @@ class DatabasePool {
         if ( $container->debug && $container->debug_level >2)
             echo "$tag->event_format: about to get connection<br>\r\n";
         if ( ! $this->Connections[self::DEFAULT_CONN]) {
-			//echo $this->xml->asXML();
-
-            //echo "$tag->event_format: host = ".					(string)$this->xml->host. "<br>";
-
-            @$this->Connections[self::DEFAULT_CONN] =
+			$this->Connections[self::DEFAULT_CONN] =
 				new mysqli( 
 					(string)$this->xml->host, 
 					(string)$this->xml->username,
