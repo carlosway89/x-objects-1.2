@@ -46,9 +46,10 @@ class DatabasePool {
 	 * getConnection(): return a connection from the pool
 	 */
 	public function getConnection() {
-        //global $container;
+        global $container;
         $tag = new xo_codetag( xo_basename(__FILE__),__LINE__,get_class(),__FUNCTION__);
-
+        if ( $container->debug && $container->debug_level >2)
+            echo "$tag->event_format: about to get connection<br>\r\n";
         if ( ! $this->Connections[self::DEFAULT_CONN]) {
 			//echo $this->xml->asXML();
 
