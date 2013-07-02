@@ -52,7 +52,7 @@ class DatabasePool {
             echo "$tag->event_format: about to get connection<br>\r\n";
         if ( ! $this->Connections[self::DEFAULT_CONN]) {
             if ( ! class_exists('mysqli',false)){
-                throw new ApplicationException("<div class='xo-exception' style='margin: 10px auto; height: auto; width: 360px; font-size: 12pt;'"$tag->event_format: The <a href='http://php.net/manual/en/book.mysqli.php' target='_mysqli'>mysqli</a> library for connectivity to the database is not installed.  For this reason, the application cannot run.");
+                throw new ApplicationException("<div class='xo-exception' style='margin: 10px auto; height: auto; width: 360px; font-size: 12pt;'>$tag->event_format: The <a href='http://php.net/manual/en/book.mysqli.php' target='_mysqli'>mysqli</a> library for connectivity to the database is not installed.  For this reason, the application cannot run.</div>");
             }
 			$this->Connections[self::DEFAULT_CONN] =
 				new mysqli( 
