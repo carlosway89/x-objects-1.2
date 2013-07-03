@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  *
  * Web Media Component to Convert DocX files
@@ -42,7 +42,8 @@ class xo_docx_file_converter {
                     $this->error = 'There is no X-Objects configuration for libreoffice';
                 else {
                     global $webapp_location;
-                    $cmd = "sudo -i ". (string) $config->binary . " --headless --invisible --convert-to pdf $this->filename --outdir $this->save_dir --nofirststartwizard -display 1 2>&1";
+                    $cmd = //"sudo -i ".
+                        (string) $config->binary . " --headless --invisible --convert-to pdf $this->filename --outdir $this->save_dir --nofirststartwizard -display 1 2>&1";
                     $this->command = $cmd;
                     if ( $container->debug) echo "$tag->event_format: cmd=$cmd<br>";
                     $command = new xo_shell_command($cmd);
