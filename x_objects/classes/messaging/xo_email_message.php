@@ -5,6 +5,7 @@
  * Time: 06:07 PM
  */
 class xo_email_message extends magic_object {
+    public $last_error = '';
     public static $last_class_error = null;
     public function __construct($from,$to,$subject,$body){
         global $container;
@@ -39,6 +40,7 @@ class xo_email_message extends magic_object {
                         //echo "succes";
                         $result = true;
                     } else {
+                        $this->last_error = $mail->ErrorInfo;
                         $result = false;
                     }
                     $mail->ClearAddresses();
