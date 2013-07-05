@@ -370,15 +370,17 @@ class PHPMailer {
    * @param boolean $exceptions Should we throw external exceptions?
    */
   public function __construct($exceptions = false) {
-    $this->exceptions = ($exceptions == true);
-	$this->Mailer     = "smtp";
-	$this->Hostname   = "smtp.mailanyone.net";
-	$this->Host       = "smtp.mailanyone.net";
-	$this->Port       = 25;
-	$this->SMTPSecure = '';
-	$this->SMTPAuth   = true;
-	$this->Username   = "test1@2pointsolutions.com";
-	$this->Password   = "new123";
+    global $container;
+      $this->exceptions = ($exceptions == true);
+    $settings = $container->config->phpmailer;
+	$this->Mailer     = $settings?(string)$settings->mailer:"smtp";
+	$this->Hostname   = $settings?(string)$settings->hostname:"smtp.brag.me";
+	$this->Host       = $settings?(string)$settings->host:"smtp.brag.me";
+	$this->Port       = $settings?(int)$settings->port:25;
+	$this->SMTPSecure = $settings?(string)$settings->smtp_secure:'';
+	$this->SMTPAuth   = $settings?(string)$settings->smtp_auth=='yes':true;
+	$this->Username   = $settings?(string)$settings->username:"test1@2pointsolutions.com";
+	$this->Password   = $settings?(string)$settings->password:"new123";
   }
 
   /**
