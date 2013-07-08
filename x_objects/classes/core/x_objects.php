@@ -185,11 +185,11 @@ class x_objects {
 				return api_manager::instance();
 			break;
             case 'log_level':
-                $lvl = (int)$this->xml->logger->level;
+                $lvl = (int)$this->config->xml()->logger->level;
                 return $lvl?$lvl:1;
             break;
             case 'logging':
-                return ((string)$this->xml->logger->status) == 'enabled';
+                return ((string)$this->config->xml()->logger->status) == 'enabled';
             break;
 			case 'app_debug':
                 return $this->debug_manager->_is(xo_debug_manager::app_debug);
