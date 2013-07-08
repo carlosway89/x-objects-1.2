@@ -585,7 +585,11 @@ abstract class data_object extends AttributedObject
 		if ( $Result = MySQLService2::query( $Query )) {
 		
 			return true;	
-		} else return false; 
+		} else {
+            // set a delete error
+            $this->delete_error = MySQLService2::getSQLError();
+            return false;
+        }
 	}
 	
 	
