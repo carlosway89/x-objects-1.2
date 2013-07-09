@@ -16,7 +16,13 @@ class xo_email_message extends magic_object {
         $this->subject = $subject;
         $this->body = $body;
     }
-    public function send($method = "mail"){
+
+    /**
+     * Send the message, using a specific method/transport
+     * @param string $method|'phpmailer' the method to use sending the message
+     * @return bool true if message sent successfully
+     */
+    public function send($method = "phpmailer"){
         $result = false;
         $headers = "From: $this->from\r\n".
             "Reply-To: $this->from\r\n".
